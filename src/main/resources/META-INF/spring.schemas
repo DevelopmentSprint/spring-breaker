@@ -1,0 +1,2 @@
+http\://www.developmentsprint.com/schema/spring/breaker-1.0.xsd=com/developmentsprint/spring/breaker/config/spring-breaker-1.0.xsd
+http\://www.developmentsprint.com/schema/spring/breaker.xsd=com/developmentsprint/spring/breaker/config/spring-breaker-1.0.xsd

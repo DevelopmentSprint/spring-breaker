@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://www.developmentsprint.com/schema/spring/breaker"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:tool="http://www.springframework.org/schema/tool"
+  targetNamespace="http://www.developmentsprint.com/schema/spring/breaker"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <xsd:import namespace="http://www.springframework.org/schema/beans" schemaLocation="http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"/>
+  <xsd:import namespace="http://www.springframework.org/schema/tool" schemaLocation="http://www.springframework.org/schema/tool/spring-tool-3.1.xsd"/>
+  <xsd:import namespace="http://www.springframework.org/schema/util" schemaLocation="http://www.springframework.org/schema/util/spring-util-3.1.xsd"/>
+
+  <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+
+  <xsd:annotation>
+    <xsd:documentation>
+      <![CDATA[
+Defines the elements used in the Spring Framework's declarative
+circuit breaker management infrastructure.
+      ]]>
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:element name="annotation-driven">
+
+    <xsd:complexType>
+
+      <xsd:attribute name="circuit-manager" type="xsd:string" default="circuitManager">
+        <xsd:annotation>
+          <xsd:documentation source="java:com.developmentsprint.spring.breaker.CircuitManager">
+            <![CDATA[
+The bean name of the CircuitManager that is to be used to retrieve the backing caches.
+
+This attribute is not required, and only needs to be specified
+explicitly if the bean name of the desired CircuitManager
+is not 'circuitManager'.
+            ]]></xsd:documentation>
+          <xsd:appinfo>
+            <tool:annotation kind="ref">
+              <tool:expected-type type="com.developmentsprint.spring.breaker.CircuitManager" />
+            </tool:annotation>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:attribute>
+
+    </xsd:complexType>
+    
+  </xsd:element>
+
+  <xsd:element name="advice">
+      <xsd:complexType>
+          <xsd:annotation>
+              <xsd:documentation source="java:org.springframework.cache.interceptor.CacheInterceptor"><![CDATA[
+Defines the cache semantics of the AOP advice that is to be
+executed.
+
+That is, this advice element is where the cacheable semantics of
+any number of methods are defined (where cacheable semantics
+includes the backing cache(s), the key, cache condition rules, and suchlike).
+              ]]></xsd:documentation>
+              <xsd:appinfo>
+                  <tool:annotation>
+                      <tool:exports type="java:org.springframework.cache.interceptor.CacheInterceptor"/>
+                  </tool:annotation>
+              </xsd:appinfo>
+          </xsd:annotation>
+          <xsd:complexContent>
+              <xsd:extension base="beans:identifiedType">
+                  <xsd:sequence>
+                      <xsd:element name="circuit-breaker" type="definitionsType" minOccurs="0" maxOccurs="unbounded"/>
+                  </xsd:sequence>
+                  <xsd:attribute name="circuit-manager" type="xsd:string" default="circuitManager">
+                      <xsd:annotation>
+                          <xsd:documentation source="java:com.developmentsprint.spring.breaker.CircuitManager"><![CDATA[
+The bean name of the CircuitManager that is to be used
+for storing and retrieving data.
+
+This attribute is not required, and only needs to be specified
+explicitly if the bean name of the desired CircuitManager
+is not 'circuitManager'.
+                          ]]></xsd:documentation>
+                          <xsd:appinfo>
+                              <tool:annotation kind="ref">
+                                  <tool:expected-type type="com.developmentsprint.spring.breaker.CircuitManager"/>
+                              </tool:annotation>
+                          </xsd:appinfo>
+                      </xsd:annotation>
+                  </xsd:attribute>
+              </xsd:extension>
+          </xsd:complexContent>
+      </xsd:complexType>
+  </xsd:element>
+
+  <xsd:complexType name="basedefinitionType">
+    <xsd:attribute name="name" type="xsd:string" use="optional">
+      <xsd:annotation>
+        <xsd:documentation><![CDATA[The name of the circuit.]]></xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="method" type="xsd:string" use="optional">
+      <xsd:annotation>
+        <xsd:documentation><![CDATA[
+The method name(s) with which the circuit attributes are to be
+associated. The wildcard (*) character can be used to associate the
+same circuit attribute settings with a number of methods; for
+example, 'get*', 'handle*', '*Order', 'on*Event', etc.]]>
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="definitionsType">
+    <xsd:complexContent>
+      <xsd:extension base="basedefinitionType">
+        <xsd:sequence>
+          <xsd:choice minOccurs="0" maxOccurs="1">
+            <xsd:element name="properties" minOccurs="0" maxOccurs="1" type="beans:propsType" />
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+</xsd:schema>

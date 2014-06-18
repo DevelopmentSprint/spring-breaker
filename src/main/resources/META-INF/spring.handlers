@@ -1,0 +1,1 @@
+http\://www.developmentsprint.com/schema/spring/breaker=com.developmentsprint.spring.breaker.config.BreakerNamespaceHandler

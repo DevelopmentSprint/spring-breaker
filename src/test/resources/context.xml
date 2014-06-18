@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:breaker="http://www.developmentsprint.com/schema/spring/breaker"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.developmentsprint.com/schema/spring/breaker http://www.developmentsprint.com/schema/spring/breaker.xsd
+  ">
+
+  <bean id="annotatedFooBar" class="com.developmentsprint.spring.breaker.test.AnnotatedFooBar" />
+
+  <bean id="annotatedFooBarImpl" class="com.developmentsprint.spring.breaker.test.AnnotatedFooBarImpl" />
+
+  <bean id="fooBar" class="com.developmentsprint.spring.breaker.test.FooBar" />
+  
+  <bean id="fooBarImpl" class="com.developmentsprint.spring.breaker.test.FooBarImpl" />
+  
+  <bean id="hystrixFooBar" class="com.developmentsprint.spring.breaker.hystrix.test.HystrixFooBar" />
+  
+  <bean id="hystrixAnnotatedFooBar" class="com.developmentsprint.spring.breaker.hystrix.test.HystrixAnnotatedFooBar" />
+
+  <beans profile="hystrixManager">
+
+    <bean id="circuitManager" class="com.developmentsprint.spring.breaker.hystrix.HystrixCircuitManager" />
+
+  </beans>
+
+  <beans profile="hystrixXmlConfig">
+
+    <breaker:advice id="circuitBreakerAdvice" circuit-manager="circuitManager">
+      <breaker:circuit-breaker name="GetNameMethodGuard" method="getName">
+        <breaker:properties>
+          <prop key="fallbackClass">com.developmentsprint.spring.breaker.hystrix.test.HystrixFallback</prop>
+        </breaker:properties>
+      </breaker:circuit-breaker>
+      <breaker:circuit-breaker name="GetCreatedDateMethodGuard" method="getCreatedDate" />
+    </breaker:advice>
+
+    <aop:config>
+      <aop:advisor advice-ref="circuitBreakerAdvice" pointcut="execution(* getName(..))"/>
+      <aop:advisor advice-ref="circuitBreakerAdvice" pointcut="execution(* getCreatedDate(..))"/>
+    </aop:config>
+
+  </beans>
+
+  <beans profile="mockManager">
+
+    <bean id="circuitManager" class="org.mockito.Mockito" factory-method="mock">
+      <constructor-arg value="com.developmentsprint.spring.breaker.CircuitManager" />
+    </bean>
+
+  </beans>
+
+  <beans profile="xmlConfig">
+
+    <breaker:advice id="circuitBreakerAdvice" circuit-manager="circuitManager">
+      <breaker:circuit-breaker name="GetNameMethodGuard" method="getName" />
+      <breaker:circuit-breaker name="GetCreatedDateMethodGuard" method="getCreatedDate" />
+    </breaker:advice>
+
+    <aop:config>
+      <aop:advisor advice-ref="circuitBreakerAdvice" pointcut="execution(* getName(..))"/>
+      <aop:advisor advice-ref="circuitBreakerAdvice" pointcut="execution(* getCreatedDate(..))"/>
+    </aop:config>
+
+  </beans>
+
+  <beans profile="annotationDriven">
+
+    <breaker:annotation-driven />
+
+  </beans>
+
+
+
+</beans>
