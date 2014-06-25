@@ -11,6 +11,7 @@ import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
 
 import com.developmentsprint.spring.breaker.annotations.AnnotationCircuitBreakerAttributeSource;
+import com.developmentsprint.spring.breaker.annotations.ProxyCircuitBreakerConfiguration;
 import com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttributeSourceAdvisor;
 import com.developmentsprint.spring.breaker.interceptor.CircuitBreakerInterceptor;
 
@@ -26,8 +27,6 @@ import com.developmentsprint.spring.breaker.interceptor.CircuitBreakerIntercepto
  * @since 1.0
  */
 final class AnnotationDrivenBreakerBeanDefinitionParser implements BeanDefinitionParser {
-
-    private static final String CIRCUIT_BREAKER_ADVISOR_BEAN_NAME = "com.developmentsprint.spring.breaker.config.internalCircuitBreakerAdvisor";
 
     /**
      * Parses the '{@code <breaker:annotation-driven>}' tag. Will {@link AopNamespaceUtils#registerAutoProxyCreatorIfNecessary register an AutoProxyCreator}
@@ -59,7 +58,7 @@ final class AnnotationDrivenBreakerBeanDefinitionParser implements BeanDefinitio
         public static void configureAutoProxyCreator(Element element, ParserContext parserContext) {
             AopNamespaceUtils.registerAutoProxyCreatorIfNecessary(parserContext, element);
 
-            if (!parserContext.getRegistry().containsBeanDefinition(CIRCUIT_BREAKER_ADVISOR_BEAN_NAME)) {
+            if (!parserContext.getRegistry().containsBeanDefinition(ProxyCircuitBreakerConfiguration.CIRCUIT_BREAKER_ADVISOR_BEAN_NAME)) {
                 Object eleSource = parserContext.extractSource(element);
 
                 // Create the AnnotationCircuitBreakerAttributeSource definition.
@@ -84,13 +83,13 @@ final class AnnotationDrivenBreakerBeanDefinitionParser implements BeanDefinitio
                 if (element.hasAttribute("order")) {
                     advisorDef.getPropertyValues().add("order", element.getAttribute("order"));
                 }
-                parserContext.getRegistry().registerBeanDefinition(CIRCUIT_BREAKER_ADVISOR_BEAN_NAME, advisorDef);
+                parserContext.getRegistry().registerBeanDefinition(ProxyCircuitBreakerConfiguration.CIRCUIT_BREAKER_ADVISOR_BEAN_NAME, advisorDef);
 
                 CompositeComponentDefinition compositeDef = new CompositeComponentDefinition(element.getTagName(),
                         eleSource);
                 compositeDef.addNestedComponent(new BeanComponentDefinition(sourceDef, sourceName));
                 compositeDef.addNestedComponent(new BeanComponentDefinition(interceptorDef, interceptorName));
-                compositeDef.addNestedComponent(new BeanComponentDefinition(advisorDef, CIRCUIT_BREAKER_ADVISOR_BEAN_NAME));
+                compositeDef.addNestedComponent(new BeanComponentDefinition(advisorDef, ProxyCircuitBreakerConfiguration.CIRCUIT_BREAKER_ADVISOR_BEAN_NAME));
                 parserContext.registerComponent(compositeDef);
             }
         }

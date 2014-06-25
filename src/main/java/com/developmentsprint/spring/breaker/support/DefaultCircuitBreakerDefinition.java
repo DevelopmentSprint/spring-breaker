@@ -22,6 +22,8 @@ public class DefaultCircuitBreakerDefinition implements CircuitBreakerDefinition
     private String name;
 
     private Map<String, String> properties = new HashMap<String, String>();
+    
+    private String circuitManager;
 
     /**
      * Create a new {@link DefaultCircuitBreakerDefinition}, with default settings. Can be modified through bean property setters.
@@ -62,6 +64,14 @@ public class DefaultCircuitBreakerDefinition implements CircuitBreakerDefinition
 
     public void setProperties(Map<String, String> properties) {
         this.properties = properties;
+    }
+
+    public String getCircuitManager() {
+        return circuitManager;
+    }
+
+    public void setCircuitManager(String circuitManager) {
+        this.circuitManager = circuitManager;
     }
 
     /**

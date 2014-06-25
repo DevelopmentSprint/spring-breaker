@@ -2,15 +2,13 @@ package com.developmentsprint.spring.breaker.interceptor;
 
 import java.lang.reflect.Method;
 
-import lombok.Getter;
-
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.framework.AopProxyUtils;
+import org.springframework.util.StringUtils;
 
 import com.developmentsprint.spring.breaker.CircuitManager;
 
-@Getter
-class AopAllianceInvoker implements CircuitManager.Invoker {
+public class AopAllianceInvoker implements CircuitManager.Invoker {
 
     private final CircuitBreakerAttribute circuitBreakerAttribute;
 
@@ -41,6 +39,43 @@ class AopAllianceInvoker implements CircuitManager.Invoker {
         arguments = invocation.getArguments();
 
         circuitBreakerAttribute = source.getCircuitBreakerAttribute(method, targetClass);
+    }
+
+    public CircuitBreakerAttribute getCircuitBreakerAttribute() {
+        DefaultCircuitBreakerAttribute cbAttr;
+        if (circuitBreakerAttribute instanceof DefaultCircuitBreakerAttribute) {
+            cbAttr = (DefaultCircuitBreakerAttribute) circuitBreakerAttribute;
+        } else {
+            cbAttr = new DefaultCircuitBreakerAttribute(circuitBreakerAttribute);
+        }
+        if (StringUtils.isEmpty(cbAttr.getName())) {
+            StringBuilder args = new StringBuilder();
+            if (arguments != null && arguments.length > 0) {
+                for (Object arg : arguments) {
+                    args.append(arg.getClass().getName()).append(", "); 
+                }
+                args.setLength(args.length() - 2);
+            }
+            String fullSignature = targetClass.getName() + "."  + method.getName() + "(" + args + ")";
+            cbAttr.setName(fullSignature);
+        }
+        return cbAttr;
+    }
+
+    public Method getMethod() {
+        return method;
+    }
+
+    public Object getTarget() {
+        return target;
+    }
+
+    public Class<?> getTargetClass() {
+        return targetClass;
+    }
+
+    public Object[] getArguments() {
+        return arguments;
     }
 
     @Override

@@ -1,50 +1,46 @@
 package com.developmentsprint.spring.breaker.hystrix;
 
-import lombok.Getter;
-import lombok.experimental.Builder;
 
-@Getter
-@Builder
 public class HystrixCommandConfig {
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/How-To-Use#CommandName
      */
-    private final String key;
+    private String key;
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/How-To-Use#CommandGroup
      */
-    private final String groupKey;
+    private String groupKey;
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/How-To-Use#command-thread-pool
      */
-    private final String threadPoolKey;
+    private String threadPoolKey;
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/How-To-Use#request-cache
      */
-    private final String cacheKey;
+    private String cacheKey;
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/Configuration#executionisolationstrategy
      */
-    private final String executionIsolationStrategy;
+    private String executionIsolationStrategy;
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/Configuration#executionisolationthreadtimeoutinmilliseconds
      */
-    private final String executionIsolationThreadTimeout;
+    private String executionIsolationThreadTimeout;
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/Configuration#fallback
      */
-    private final String fallbackClass;
+    private String fallbackClass;
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/Configuration#fallbackisolationsemaphoremaxconcurrentrequests
      */
-    private final Integer fallbackIsolationSemaphoreMaxConcurrentRequests;
+    private Integer fallbackIsolationSemaphoreMaxConcurrentRequests;
 
 }

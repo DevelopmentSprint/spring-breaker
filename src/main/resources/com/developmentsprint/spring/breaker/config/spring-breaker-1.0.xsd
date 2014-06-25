@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsd:schema xmlns="http://www.developmentsprint.com/schema/spring/breaker"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns:beans="http://www.springframework.org/schema/beans"
-  xmlns:util="http://www.springframework.org/schema/util"
-  xmlns:tool="http://www.springframework.org/schema/tool"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:util="http://www.springframework.org/schema/util" xmlns:tool="http://www.springframework.org/schema/tool"
   targetNamespace="http://www.developmentsprint.com/schema/spring/breaker"
-  elementFormDefault="qualified"
-  attributeFormDefault="unqualified">
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-  <xsd:import namespace="http://www.springframework.org/schema/beans" schemaLocation="http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"/>
-  <xsd:import namespace="http://www.springframework.org/schema/tool" schemaLocation="http://www.springframework.org/schema/tool/spring-tool-3.1.xsd"/>
-  <xsd:import namespace="http://www.springframework.org/schema/util" schemaLocation="http://www.springframework.org/schema/util/spring-util-3.1.xsd"/>
+  <xsd:import namespace="http://www.springframework.org/schema/beans"
+    schemaLocation="http://www.springframework.org/schema/beans/spring-beans-3.1.xsd" />
+  <xsd:import namespace="http://www.springframework.org/schema/tool"
+    schemaLocation="http://www.springframework.org/schema/tool/spring-tool-3.1.xsd" />
+  <xsd:import namespace="http://www.springframework.org/schema/util"
+    schemaLocation="http://www.springframework.org/schema/util/spring-util-3.1.xsd" />
 
-  <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+  <xsd:import namespace="http://www.springframework.org/schema/beans" />
 
   <xsd:annotation>
     <xsd:documentation>
@@ -27,11 +27,13 @@ circuit breaker management infrastructure.
 
     <xsd:complexType>
 
-      <xsd:attribute name="circuit-manager" type="xsd:string" default="circuitManager">
+      <xsd:attribute name="circuit-manager" type="xsd:string"
+        default="circuitManager">
         <xsd:annotation>
-          <xsd:documentation source="java:com.developmentsprint.spring.breaker.CircuitManager">
+          <xsd:documentation
+            source="java:com.developmentsprint.spring.breaker.CircuitManager">
             <![CDATA[
-The bean name of the CircuitManager that is to be used to retrieve the backing caches.
+The bean name of the CircuitManager that is to be used to provide circuit breaker logic..
 
 This attribute is not required, and only needs to be specified
 explicitly if the bean name of the desired CircuitManager
@@ -39,41 +41,91 @@ is not 'circuitManager'.
             ]]></xsd:documentation>
           <xsd:appinfo>
             <tool:annotation kind="ref">
-              <tool:expected-type type="com.developmentsprint.spring.breaker.CircuitManager" />
+              <tool:expected-type
+                type="com.developmentsprint.spring.breaker.CircuitManager" />
             </tool:annotation>
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:attribute>
 
+      <xsd:attribute name="mode" default="proxy">
+        <xsd:annotation>
+          <xsd:documentation><![CDATA[
+Should annotated beans be proxied using Spring's AOP framework,
+or should they rather be weaved with an AspectJ transaction aspect?
+
+AspectJ weaving requires spring-aspects.jar on the classpath,
+as well as load-time weaving (or compile-time weaving) enabled.
+
+Note: The weaving-based aspect requires the @CircuitBreaker
+annotations to be defined on the concrete class. Annotations in interfaces
+will not work in that case (they will rather only work with interface-based proxies)!
+                    ]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="proxy" />
+            <xsd:enumeration value="aspectj" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:attribute>
+
+      <xsd:attribute name="proxy-target-class" type="xsd:boolean"
+        default="false">
+        <xsd:annotation>
+          <xsd:documentation><![CDATA[
+Are class-based (CGLIB) proxies to be created? By default, standard
+Java interface-based proxies are created.
+
+Note: Class-based proxies require the @CircuitBreaker annotations
+to be defined on the concrete class. Annotations in interfaces will not work
+in that case (they will rather only work with interface-based proxies)!
+                    ]]></xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+
+      <xsd:attribute name="order" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation source="java:org.springframework.core.Ordered"><![CDATA[
+Controls the ordering of the execution of the circuit breaker advisor
+when multiple advice executes at a specific joinpoint.
+                    ]]></xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+
     </xsd:complexType>
-    
+
   </xsd:element>
 
   <xsd:element name="advice">
-      <xsd:complexType>
-          <xsd:annotation>
-              <xsd:documentation source="java:org.springframework.cache.interceptor.CacheInterceptor"><![CDATA[
-Defines the cache semantics of the AOP advice that is to be
+    <xsd:complexType>
+      <xsd:annotation>
+        <xsd:documentation
+          source="java:com.developmentsprint.spring.breaker.interceptor.CircuitBreakerInterceptor"><![CDATA[
+Defines the circuit breaker semantics of the AOP advice that is to be
 executed.
 
-That is, this advice element is where the cacheable semantics of
-any number of methods are defined (where cacheable semantics
-includes the backing cache(s), the key, cache condition rules, and suchlike).
+That is, this advice element is where the circuit breaker semantics of
+any number of methods are defined.
               ]]></xsd:documentation>
-              <xsd:appinfo>
-                  <tool:annotation>
-                      <tool:exports type="java:org.springframework.cache.interceptor.CacheInterceptor"/>
-                  </tool:annotation>
-              </xsd:appinfo>
-          </xsd:annotation>
-          <xsd:complexContent>
-              <xsd:extension base="beans:identifiedType">
-                  <xsd:sequence>
-                      <xsd:element name="circuit-breaker" type="definitionsType" minOccurs="0" maxOccurs="unbounded"/>
-                  </xsd:sequence>
-                  <xsd:attribute name="circuit-manager" type="xsd:string" default="circuitManager">
-                      <xsd:annotation>
-                          <xsd:documentation source="java:com.developmentsprint.spring.breaker.CircuitManager"><![CDATA[
+        <xsd:appinfo>
+          <tool:annotation>
+            <tool:exports
+              type="java:com.developmentsprint.spring.breaker.interceptor.CircuitBreakerInterceptor" />
+          </tool:annotation>
+        </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+        <xsd:extension base="beans:identifiedType">
+          <xsd:sequence>
+            <xsd:element name="circuit-breaker" type="definitionsType"
+              minOccurs="0" maxOccurs="unbounded" />
+          </xsd:sequence>
+          <xsd:attribute name="circuit-manager" type="xsd:string"
+            default="circuitManager">
+            <xsd:annotation>
+              <xsd:documentation
+                source="java:com.developmentsprint.spring.breaker.CircuitManager"><![CDATA[
 The bean name of the CircuitManager that is to be used
 for storing and retrieving data.
 
@@ -81,16 +133,17 @@ This attribute is not required, and only needs to be specified
 explicitly if the bean name of the desired CircuitManager
 is not 'circuitManager'.
                           ]]></xsd:documentation>
-                          <xsd:appinfo>
-                              <tool:annotation kind="ref">
-                                  <tool:expected-type type="com.developmentsprint.spring.breaker.CircuitManager"/>
-                              </tool:annotation>
-                          </xsd:appinfo>
-                      </xsd:annotation>
-                  </xsd:attribute>
-              </xsd:extension>
-          </xsd:complexContent>
-      </xsd:complexType>
+              <xsd:appinfo>
+                <tool:annotation kind="ref">
+                  <tool:expected-type
+                    type="com.developmentsprint.spring.breaker.CircuitManager" />
+                </tool:annotation>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
   </xsd:element>
 
   <xsd:complexType name="basedefinitionType">
@@ -116,7 +169,8 @@ example, 'get*', 'handle*', '*Order', 'on*Event', etc.]]>
       <xsd:extension base="basedefinitionType">
         <xsd:sequence>
           <xsd:choice minOccurs="0" maxOccurs="1">
-            <xsd:element name="properties" minOccurs="0" maxOccurs="1" type="beans:propsType" />
+            <xsd:element name="properties" minOccurs="0"
+              maxOccurs="1" type="beans:propsType" />
           </xsd:choice>
         </xsd:sequence>
       </xsd:extension>

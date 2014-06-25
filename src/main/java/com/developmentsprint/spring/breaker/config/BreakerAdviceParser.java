@@ -37,10 +37,10 @@ public class BreakerAdviceParser extends AbstractSingleBeanDefinitionParser {
     protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
         builder.addPropertyReference(CB_MANAGER_NAME, BreakerNamespaceHandler.extractCircuitManager(element));
 
-        List<Element> txAttributes = DomUtils.getChildElementsByTagName(element, CB_ELEMENT_NAME);
-        if (txAttributes.size() > 0) {
+        List<Element> cbAttributes = DomUtils.getChildElementsByTagName(element, CB_ELEMENT_NAME);
+        if (cbAttributes.size() > 0) {
             // Using attributes source.
-            RootBeanDefinition attributeSourceDefinition = parseAttributeSource(txAttributes, parserContext);
+            RootBeanDefinition attributeSourceDefinition = parseAttributeSource(cbAttributes, parserContext);
             builder.addPropertyValue("circuitBreakerAttributeSource", attributeSourceDefinition);
         }
         else {

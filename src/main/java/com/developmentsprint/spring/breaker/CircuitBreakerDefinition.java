@@ -36,4 +36,10 @@ public interface CircuitBreakerDefinition {
      */
     Map<String, String> getProperties();
 
+    /**
+     * @return The circuit manager bean name associated with this circuit breaker. By default this is the circuitManager associated with the advice,
+     *         annotation-config, or "circuitManager" if otherwise undefined.
+     */
+    String getCircuitManager();
+
 }

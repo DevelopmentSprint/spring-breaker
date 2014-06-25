@@ -17,7 +17,8 @@ public class SpringCircuitBreakerAnnotationParser implements CircuitBreakerAnnot
     public CircuitBreakerAttribute parseCircuitBreakerAnnotation(AnnotatedElement ae) {
         CircuitBreaker ann = AnnotationUtils.getAnnotation(ae, CircuitBreaker.class);
         if (ann != null) {
-            return parseCircuitBreakerAnnotation(ann);
+            CircuitBreakerAttribute cbAttribute = parseCircuitBreakerAnnotation(ann);
+            return cbAttribute;
         }
         else {
             return null;
