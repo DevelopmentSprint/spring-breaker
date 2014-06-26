@@ -14,8 +14,8 @@ If you are adding a new file it should have a header like this:
 
 ```
 /**
- * Copyright 2014 Development Spring, LLC.
- * 
+ * Copyright 2014 Development Sprint, LLC.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
