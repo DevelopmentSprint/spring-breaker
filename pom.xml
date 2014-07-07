@@ -16,10 +16,42 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
   <groupId>com.developmentsprint</groupId>
   <artifactId>spring-breaker</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>Spring Circuit Breaker Library</name>
+  <description>Spring Breaker provides an abstraction over circuit breaking behavior in typical Spring style modeled after Spring TX and Sprign Cache.</description>
+  <url>https://github.com/DevelopmentSprint/spring-breaker</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:DevelopmentSprint/spring-breaker.git</connection>
+    <developerConnection>scm:git:git@github.com:DevelopmentSprint/spring-breaker.git</developerConnection>
+    <url>git@github.com:DevelopmentSprint/spring-breaker.git</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>torr</id>
+      <email>torr@developmentsprint.com</email>
+      <name>Todd Orr</name>
+      <timezone>-5</timezone>
+    </developer>
+  </developers>
 
   <properties>
     <spring-version>3.2.9.RELEASE</spring-version>
@@ -58,6 +90,32 @@
             <phase>process-sources</phase>
             <goals>
               <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
             </goals>
           </execution>
         </executions>
@@ -131,11 +189,13 @@
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
       <version>1.6.11</version>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
       <version>1.6.11</version>
+      <optional>true</optional>
     </dependency>
 
     <dependency>
