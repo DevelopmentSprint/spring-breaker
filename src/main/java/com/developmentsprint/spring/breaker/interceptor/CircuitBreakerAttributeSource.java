@@ -29,7 +29,6 @@ import com.developmentsprint.spring.breaker.annotations.AnnotationCircuitBreaker
  * @author Todd Orr
  * @since 1.0
  * @see CircuitBreakerInterceptor#setCircuitBreakerAttributeSource
- * @see CircuitBreakerProxyFactoryBean#setCircuitBreakerAttributeSource
  * @see AnnotationCircuitBreakerAttributeSource
  */
 public interface CircuitBreakerAttributeSource {

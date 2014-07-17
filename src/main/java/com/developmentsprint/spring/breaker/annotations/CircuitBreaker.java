@@ -28,7 +28,7 @@ import java.lang.annotation.Target;
 @Inherited
 public @interface CircuitBreaker {
 
-    String commandName() default "";
+    String name() default "";
 
     CircuitProperty[] properties() default {};
 

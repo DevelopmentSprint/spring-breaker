@@ -31,7 +31,7 @@ public class AnnotatedFooBar {
         return 10;
     }
 
-    @CircuitBreaker(commandName = "AnnotatedGetNameMethodGuard")
+    @CircuitBreaker(name = "AnnotatedGetNameMethodGuard")
     public String getName() {
         log.info("Returning name");
         return "FooBar";
@@ -42,7 +42,7 @@ public class AnnotatedFooBar {
         return "A mighty FooBar!";
     }
 
-    @CircuitBreaker(commandName = "AnnotatedGetCreatedDateMethodGuard")
+    @CircuitBreaker(name = "AnnotatedGetCreatedDateMethodGuard")
     public Date getCreatedDate() {
         log.info("Returning created date");
         return new Date();

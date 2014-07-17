@@ -23,12 +23,12 @@ public interface AnnotatedFooBarInterface {
 
     Integer getCount();
 
-    @CircuitBreaker(commandName = "AnnotatedInterfaceGetNameMethodGuard")
+    @CircuitBreaker(name = "AnnotatedInterfaceGetNameMethodGuard")
     String getName();
 
     String getDescription();
 
-    @CircuitBreaker(commandName = "AnnotatedInterfaceGetCreatedDateMethodGuard")
+    @CircuitBreaker(name = "AnnotatedInterfaceGetCreatedDateMethodGuard")
     Date getCreatedDate();
 
 }

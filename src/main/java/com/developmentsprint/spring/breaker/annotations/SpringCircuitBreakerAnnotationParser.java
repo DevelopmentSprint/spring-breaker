@@ -42,7 +42,7 @@ public class SpringCircuitBreakerAnnotationParser implements CircuitBreakerAnnot
 
     public CircuitBreakerAttribute parseCircuitBreakerAnnotation(CircuitBreaker ann) {
         DefaultCircuitBreakerAttribute attr = new DefaultCircuitBreakerAttribute();
-        attr.setName(ann.commandName());
+        attr.setName(ann.name());
         if (ann.properties().length > 0) {
             Map<String, String> properties = new HashMap<String, String>();
             for (CircuitProperty prop : ann.properties()) {

@@ -36,9 +36,10 @@ import com.developmentsprint.spring.breaker.CircuitManager;
  * Otherwise, any custom {@link CircuitManager} may play that role of the last delegate as well, lazily creating circuit breakers.
  * 
  * <p>
- * Note: Regular CircuitManagers that this composite manager delegates to need to return {@code null} from {@link #getCache(String)} if they are unaware of the
- * specified cache name, allowing for iteration to the next delegate in line. However, most {@link CircuitManager} implementations fall back to lazy creation of
- * named caches once requested; check out the specific configuration details for a 'static' mode with fixed cache names, if available.
+ * Note: Regular CircuitManagers that this composite manager delegates to need to return {@code null} from {@link #circuitManagers} if they are unaware of the
+ * specified circuit manager name, allowing for iteration to the next delegate in line. However, most {@link CircuitManager} implementations fall back to lazy
+ * creation of named circuit manager once requested; check out the specific configuration details for a 'static' mode with fixed circuit manager names, if
+ * available.
  * 
  * @author Todd Orr
  * @since 1.0

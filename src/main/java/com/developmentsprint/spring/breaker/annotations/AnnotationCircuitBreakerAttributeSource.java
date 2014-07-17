@@ -35,19 +35,17 @@ public class AnnotationCircuitBreakerAttributeSource extends AbstractFallbackCir
     private final Set<CircuitBreakerAnnotationParser> annotationParsers;
 
     /**
-     * Create a default AnnotationTransactionAttributeSource, supporting public methods that carry the {@code Transactional} annotation or the EJB3
-     * {@link javax.ejb.TransactionAttribute} annotation.
+     * Create a default AnnotationCircuitBreakerAttributeSource, supporting public methods that carry the {@code CircuitBreaker}.
      */
     public AnnotationCircuitBreakerAttributeSource() {
         this(true);
     }
 
     /**
-     * Create a custom AnnotationTransactionAttributeSource, supporting public methods that carry the {@code Transactional} annotation or the EJB3
-     * {@link javax.ejb.TransactionAttribute} annotation.
+     * Create a custom AnnotationCircuitBreakerAttributeSource, supporting public methods that carry the {@code CircuitBreaker} annotation.
      * 
      * @param publicMethodsOnly
-     *            whether to support public methods that carry the {@code Transactional} annotation only (typically for use with proxy-based AOP), or
+     *            whether to support public methods that carry the {@code CircuitBreaker} annotation only (typically for use with proxy-based AOP), or
      *            protected/private methods as well (typically used with AspectJ class weaving)
      */
     public AnnotationCircuitBreakerAttributeSource(boolean publicMethodsOnly) {
@@ -57,14 +55,14 @@ public class AnnotationCircuitBreakerAttributeSource extends AbstractFallbackCir
     }
 
     /**
-     * Create a custom AnnotationTransactionAttributeSource.
+     * Create a custom AnnotationCircuitBreakerAttributeSource.
      * 
      * @param annotationParser
-     *            the TransactionAnnotationParser to use
+     *            the CircuitBreakerAnnotationParser to use
      */
     public AnnotationCircuitBreakerAttributeSource(CircuitBreakerAnnotationParser annotationParser) {
         this.publicMethodsOnly = true;
-        Assert.notNull(annotationParser, "TransactionAnnotationParser must not be null");
+        Assert.notNull(annotationParser, "CircuitBreakerAnnotationParser must not be null");
         this.annotationParsers = Collections.singleton(annotationParser);
     }
 
@@ -76,21 +74,21 @@ public class AnnotationCircuitBreakerAttributeSource extends AbstractFallbackCir
      */
     public AnnotationCircuitBreakerAttributeSource(CircuitBreakerAnnotationParser... annotationParsers) {
         this.publicMethodsOnly = true;
-        Assert.notEmpty(annotationParsers, "At least one TransactionAnnotationParser needs to be specified");
+        Assert.notEmpty(annotationParsers, "At least one CircuitBreakerAnnotationParser needs to be specified");
         Set<CircuitBreakerAnnotationParser> parsers = new LinkedHashSet<CircuitBreakerAnnotationParser>(annotationParsers.length);
         Collections.addAll(parsers, annotationParsers);
         this.annotationParsers = parsers;
     }
 
     /**
-     * Create a custom AnnotationTransactionAttributeSource.
+     * Create a custom AnnotationCircuitBreakerAttributeSource.
      * 
      * @param annotationParsers
-     *            the TransactionAnnotationParsers to use
+     *            the CircuitBreakerAnnotationParsers to use
      */
     public AnnotationCircuitBreakerAttributeSource(Set<CircuitBreakerAnnotationParser> annotationParsers) {
         this.publicMethodsOnly = true;
-        Assert.notEmpty(annotationParsers, "At least one TransactionAnnotationParser needs to be specified");
+        Assert.notEmpty(annotationParsers, "At least one CircuitBreakerAnnotationParser needs to be specified");
         this.annotationParsers = annotationParsers;
     }
 
@@ -105,16 +103,16 @@ public class AnnotationCircuitBreakerAttributeSource extends AbstractFallbackCir
     }
 
     /**
-     * Determine the transaction attribute for the given method or class.
+     * Determine the circuit breaker attribute for the given method or class.
      * <p>
-     * This implementation delegates to configured {@link TransactionAnnotationParser TransactionAnnotationParsers} for parsing known annotations into Spring's
-     * metadata attribute class. Returns {@code null} if it's not transactional.
+     * This implementation delegates to configured {@link CircuitBreakerAnnotationParser CircuitBreakerAnnotationParsers} for parsing known annotations into
+     * Spring's metadata attribute class. Returns {@code null} if it's not wired for circuit breaking.
      * <p>
      * Can be overridden to support custom annotations that carry transaction metadata.
      * 
      * @param ae
      *            the annotated method or class
-     * @return TransactionAttribute the configured transaction attribute, or {@code null} if none was found
+     * @return CircuitBreakerAttribute the configured circuit breaker attribute, or {@code null} if none was found
      */
     protected CircuitBreakerAttribute determineCircuitBreakerAttribute(AnnotatedElement ae) {
         for (CircuitBreakerAnnotationParser annotationParser : this.annotationParsers) {

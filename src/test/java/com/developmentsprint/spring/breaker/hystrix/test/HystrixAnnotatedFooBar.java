@@ -32,7 +32,7 @@ public class HystrixAnnotatedFooBar {
         return 10;
     }
 
-    @CircuitBreaker(commandName = "AnnotatedGetNameMethodGuard", properties = {
+    @CircuitBreaker(name = "AnnotatedGetNameMethodGuard", properties = {
             @CircuitProperty(key = "fallbackClass", value = "com.developmentsprint.spring.breaker.hystrix.test.HystrixFallback")
     })
     public String getName() {
