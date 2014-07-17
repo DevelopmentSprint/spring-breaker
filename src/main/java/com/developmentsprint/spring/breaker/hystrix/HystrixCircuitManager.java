@@ -16,6 +16,7 @@
 package com.developmentsprint.spring.breaker.hystrix;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -27,16 +28,23 @@ import com.developmentsprint.spring.breaker.hystrix.fallback.FailFastFallback;
 import com.developmentsprint.spring.breaker.hystrix.fallback.FailSilentFallback;
 import com.developmentsprint.spring.breaker.hystrix.fallback.HystrixFallback;
 import com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttribute;
+import com.netflix.config.ConfigurationManager;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
-import com.netflix.hystrix.HystrixCommandProperties;
-import com.netflix.hystrix.HystrixCommandProperties.ExecutionIsolationStrategy;
 import com.netflix.hystrix.HystrixThreadPoolKey;
 
 public class HystrixCircuitManager implements CircuitManager {
 
     private static final Logger log = LoggerFactory.getLogger(HystrixCircuitManager.class);
+
+    private static final String INSTANCE_COMMAND_PROP_KEY_FORMAT = "hystrix.command.%s.%s";
+
+    private static final String INSTANCE_THREADPOOL_PROP_KEY_FORMAT = "hystrix.threadpool.%s.%s";
+
+    private static final String INSTANCE_COLLAPSER_PROP_KEY_FORMAT = "hystrix.collapser.%s.%s";
+
+    private static final Map<String, Boolean> CONFIGURED_BREAKERS = new ConcurrentHashMap<String, Boolean>();
 
     @Override
     public Object execute(final Invoker invoker) {
@@ -44,12 +52,24 @@ public class HystrixCircuitManager implements CircuitManager {
         CircuitBreakerAttribute attr = invoker.getCircuitBreakerAttribute();
 
         String circuitBreakerName = determineCommandName(attr);
-
         String circuitBreakerGroup = determineGroupName(attr);
-
         String threadPoolName = determineThreadPoolName(attr);
 
-        ExecutionIsolationStrategy isolationStrategy = determineIsolationStrategy(attr);
+        if (!CONFIGURED_BREAKERS.containsKey(circuitBreakerName)) {
+            synchronized (circuitBreakerName) {
+                if (!CONFIGURED_BREAKERS.containsKey(circuitBreakerName)) {
+                    for (Map.Entry<String, String> entry : attr.getProperties().entrySet()) {
+                        String commandKey = String.format(INSTANCE_COMMAND_PROP_KEY_FORMAT, circuitBreakerName, entry.getKey());
+                        ConfigurationManager.getConfigInstance().setProperty(commandKey, entry.getValue());
+                        String threadPoolKey = String.format(INSTANCE_THREADPOOL_PROP_KEY_FORMAT, threadPoolName, entry.getKey());
+                        ConfigurationManager.getConfigInstance().setProperty(threadPoolKey, entry.getValue());
+                        String collapserKey = String.format(INSTANCE_COLLAPSER_PROP_KEY_FORMAT, threadPoolName, entry.getKey());
+                        ConfigurationManager.getConfigInstance().setProperty(collapserKey, entry.getValue());
+                    }
+                    CONFIGURED_BREAKERS.put(circuitBreakerName, Boolean.TRUE);
+                }
+            }
+        }
 
         final HystrixFallback<?> fallback = determineFallback(attr);
 
@@ -62,8 +82,6 @@ public class HystrixCircuitManager implements CircuitManager {
         HystrixCommand.Setter setter = HystrixCommand.Setter
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey(circuitBreakerGroup))
                 .andCommandKey(HystrixCommandKey.Factory.asKey(circuitBreakerName))
-                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
-                        .withExecutionIsolationStrategy(isolationStrategy))
                 .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey(threadPoolName));
 
         HystrixCommand<Object> command = new HystrixCommand<Object>(setter) {
@@ -116,18 +134,6 @@ public class HystrixCircuitManager implements CircuitManager {
 
     private String determineCommandName(CircuitBreakerAttribute attr) {
         return attr.getName();
-    }
-
-    private ExecutionIsolationStrategy determineIsolationStrategy(CircuitBreakerAttribute attr) {
-        Map<String, String> properties = attr.getProperties();
-        String strategyName = ExecutionIsolationStrategy.THREAD.name();
-        for (Map.Entry<String, String> entry : properties.entrySet()) {
-            if (entry.getKey().equals("executionIsolationStrategy")) {
-                strategyName = entry.getValue();
-            }
-        }
-        ExecutionIsolationStrategy strategy = ExecutionIsolationStrategy.valueOf(strategyName);
-        return strategy;
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })

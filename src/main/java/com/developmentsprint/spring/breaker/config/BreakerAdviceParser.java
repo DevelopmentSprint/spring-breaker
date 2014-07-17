@@ -25,6 +25,7 @@ import org.springframework.beans.factory.support.ManagedMap;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
+import org.springframework.util.StringUtils;
 import org.springframework.util.xml.DomUtils;
 import org.w3c.dom.Element;
 
@@ -80,7 +81,11 @@ public class BreakerAdviceParser extends AbstractSingleBeanDefinitionParser {
             attribute.setMethodName(methodName);
 
             String cbName = methodEle.getAttribute(CB_NAME_ATTRIBUTE);
-            attribute.setName(cbName);
+            if (StringUtils.isEmpty(cbName)) {
+                attribute.setName(methodName);
+            } else {
+                attribute.setName(cbName);
+            }
 
             Element propsElement = DomUtils.getChildElementByTagName(methodEle, "properties");
             if (propsElement != null) {

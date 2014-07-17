@@ -17,10 +17,12 @@ package com.developmentsprint.spring.breaker.annotations;
 
 import java.io.Serializable;
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.util.StringUtils;
 
 import com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttribute;
 import com.developmentsprint.spring.breaker.interceptor.DefaultCircuitBreakerAttribute;
@@ -32,7 +34,7 @@ public class SpringCircuitBreakerAnnotationParser implements CircuitBreakerAnnot
     public CircuitBreakerAttribute parseCircuitBreakerAnnotation(AnnotatedElement ae) {
         CircuitBreaker ann = AnnotationUtils.getAnnotation(ae, CircuitBreaker.class);
         if (ann != null) {
-            CircuitBreakerAttribute cbAttribute = parseCircuitBreakerAnnotation(ann);
+            CircuitBreakerAttribute cbAttribute = parseCircuitBreakerAnnotation(ann, ae);
             return cbAttribute;
         }
         else {
@@ -40,9 +42,14 @@ public class SpringCircuitBreakerAnnotationParser implements CircuitBreakerAnnot
         }
     }
 
-    public CircuitBreakerAttribute parseCircuitBreakerAnnotation(CircuitBreaker ann) {
+    public CircuitBreakerAttribute parseCircuitBreakerAnnotation(CircuitBreaker ann, AnnotatedElement ae) {
         DefaultCircuitBreakerAttribute attr = new DefaultCircuitBreakerAttribute();
-        attr.setName(ann.name());
+        if (StringUtils.isEmpty(ann.name()) && ae instanceof Method) {
+            String name = ((Method) ae).getName();
+            attr.setName(name);
+        } else {
+            attr.setName(ann.name());
+        }
         if (ann.properties().length > 0) {
             Map<String, String> properties = new HashMap<String, String>();
             for (CircuitProperty prop : ann.properties()) {
