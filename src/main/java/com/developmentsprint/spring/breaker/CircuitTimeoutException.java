@@ -15,21 +15,15 @@
  */
 package com.developmentsprint.spring.breaker;
 
-import org.springframework.core.NestedRuntimeException;
-
-public class CircuitBreakerException extends NestedRuntimeException {
+public class CircuitTimeoutException extends CircuitBreakerException {
 
     private static final long serialVersionUID = 1L;
 
-    public CircuitBreakerException(String msg) {
+    public CircuitTimeoutException(String msg) {
         super(msg);
     }
 
-    public CircuitBreakerException(Throwable e) {
-        super(e.getMessage(), e);
-    }
-
-    public CircuitBreakerException(String msg, Throwable cause) {
+    public CircuitTimeoutException(String msg, Throwable cause) {
         super(msg, cause);
     }
 

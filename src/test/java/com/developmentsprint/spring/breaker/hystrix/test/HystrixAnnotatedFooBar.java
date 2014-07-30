@@ -54,4 +54,22 @@ public class HystrixAnnotatedFooBar {
         return new Date();
     }
 
+    @CircuitBreaker(name = "AnnotatedGetTextMethodGuard", properties = {
+            @CircuitProperty(key = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+    })
+    public String getText() {
+        log.info("Returning text");
+        try {
+            Thread.sleep(500L);
+        } catch (InterruptedException e) {
+            // do nothing
+        }
+        return "A pathetic FooBar...";
+    }
+
+    @CircuitBreaker(name = "AnnotatedThrowsNullPointerExceptionMethodGuard")
+    public String throwsNullPointerException() {
+        throw new NullPointerException("This was explicitly thrown");
+    }
+
 }

@@ -48,8 +48,10 @@ public class CircuitBreakerInterceptor extends CircuitBreakerAspectSupport imple
 
         try {
             return invokeWithinCircuitBreaker(aopAllianceInvoker);
-        } catch (ThrowableWrapper e) {
-            throw new CircuitBreakerException(e.getMessage(), e.getOriginal());
+        } catch (CircuitBreakerException e) {
+            throw e;
+        } catch (Throwable e) {
+            throw new CircuitBreakerException(e.getMessage(), e);
         }
     }
 

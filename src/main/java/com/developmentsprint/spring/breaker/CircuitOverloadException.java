@@ -13,19 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.developmentsprint.spring.breaker.interceptor;
+package com.developmentsprint.spring.breaker;
 
-class ThrowableWrapper extends RuntimeException {
+public class CircuitOverloadException extends CircuitBreakerException {
 
     private static final long serialVersionUID = 1L;
 
-    private final Throwable original;
-
-    ThrowableWrapper(Throwable original) {
-        this.original = original;
+    public CircuitOverloadException(String msg) {
+        super(msg);
     }
 
-    public Throwable getOriginal() {
-        return original;
+    public CircuitOverloadException(String msg, Throwable cause) {
+        super(msg, cause);
     }
+
 }

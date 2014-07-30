@@ -21,6 +21,7 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.util.StringUtils;
 
+import com.developmentsprint.spring.breaker.CircuitBreakerException;
 import com.developmentsprint.spring.breaker.CircuitManager;
 
 public class AopAllianceInvoker implements CircuitManager.Invoker {
@@ -97,8 +98,10 @@ public class AopAllianceInvoker implements CircuitManager.Invoker {
     public Object invoke() {
         try {
             return invocation.proceed();
-        } catch (Throwable ex) {
-            throw new ThrowableWrapper(ex);
+        } catch (CircuitBreakerException e) {
+            throw e;
+        } catch (Throwable e) {
+            throw new CircuitBreakerException(e);
         }
     }
 

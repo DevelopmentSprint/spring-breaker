@@ -16,6 +16,14 @@
 package com.developmentsprint.spring.breaker.hystrix;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +32,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.developmentsprint.spring.breaker.CircuitBreakerException;
 import com.developmentsprint.spring.breaker.CircuitManager;
 import com.developmentsprint.spring.breaker.hystrix.test.HystrixAnnotatedFooBar;
 
@@ -42,6 +51,46 @@ public class HystrixAnnotationDrivenConcreteClassTest {
     public void testFallback() {
         String name = methods.getName();
         assertThat(name).isEqualTo("Intercepted by Hystrix");
+    }
+
+    @Test
+    public void testPassThroughFailure() {
+        try {
+            methods.throwsNullPointerException();
+            fail("Shouldn't get here");
+        } catch (CircuitBreakerException e) {
+            assertThat(e.getCause()).isInstanceOf(NullPointerException.class);
+        }
+    }
+
+    @Test
+    public void testMaxConcurrency() throws Exception {
+        ExecutorService executor = Executors.newFixedThreadPool(20);
+        List<Future<String>> futures = new ArrayList<Future<String>>();
+        for (int i = 0; i < 20; i++) {
+            futures.add(executor.submit(new Callable<String>() {
+                @Override
+                public String call() throws Exception {
+                    return methods.getText();
+                }
+            }));
+        }
+
+        Thread.sleep(500L);
+
+        int successes = 0;
+        int rejections = 0;
+        for (Future<String> future : futures) {
+            try {
+                future.get();
+                successes++;
+            } catch (Exception e) {
+                rejections++;
+            }
+        }
+
+        assertThat(successes).isEqualTo(10);
+        assertThat(rejections).isEqualTo(10);
     }
 
 }

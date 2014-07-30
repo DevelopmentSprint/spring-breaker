@@ -17,6 +17,8 @@ package com.developmentsprint.spring.breaker.hystrix;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeoutException;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -24,6 +26,8 @@ import org.slf4j.LoggerFactory;
 
 import com.developmentsprint.spring.breaker.CircuitBreakerException;
 import com.developmentsprint.spring.breaker.CircuitManager;
+import com.developmentsprint.spring.breaker.CircuitOverloadException;
+import com.developmentsprint.spring.breaker.CircuitTimeoutException;
 import com.developmentsprint.spring.breaker.hystrix.fallback.FailFastFallback;
 import com.developmentsprint.spring.breaker.hystrix.fallback.FailSilentFallback;
 import com.developmentsprint.spring.breaker.hystrix.fallback.HystrixFallback;
@@ -33,6 +37,7 @@ import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
 import com.netflix.hystrix.HystrixThreadPoolKey;
+import com.netflix.hystrix.exception.HystrixRuntimeException;
 
 public class HystrixCircuitManager implements CircuitManager {
 
@@ -91,9 +96,10 @@ public class HystrixCircuitManager implements CircuitManager {
                 try {
                     return invoker.invoke();
                 } catch (Exception e) {
+                    if (e.getCause() != null && e.getCause() instanceof Exception) {
+                        e = ((Exception)e.getCause());
+                    }
                     throw e;
-                } catch (Throwable e) {
-                    throw new Exception(e);
                 }
             }
 
@@ -109,7 +115,19 @@ public class HystrixCircuitManager implements CircuitManager {
             }
         };
 
-        return command.execute();
+        try {
+            return command.execute();
+        } catch (HystrixRuntimeException e) {
+            Throwable t = e.getCause();
+            if (t instanceof CircuitBreakerException) {
+                throw (CircuitBreakerException) e.getCause();
+            } else if (t instanceof TimeoutException) {
+                throw new CircuitTimeoutException(e.getMessage(), e);
+            } else if (t instanceof RejectedExecutionException) {
+                throw new CircuitOverloadException(e.getMessage(), e);
+            }
+            throw new CircuitBreakerException(t);
+        }
     }
 
     private String determineGroupName(CircuitBreakerAttribute attr) {
