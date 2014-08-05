@@ -176,6 +176,7 @@
           <message>Creating site for ${project.artifactId}, ${project.version}</message>
           <path>${project.distributionManagement.site.url}</path>
           <merge>true</merge>
+          <dryRun>true</dryRun>
         </configuration>
         <executions>
           <execution>
@@ -195,6 +196,19 @@
         <configuration>
           
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.4</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+            <version>1.6</version>
+          </dependency>
+        </dependencies>
       </plugin>
 
     </plugins>
@@ -250,18 +264,18 @@
       </exclusions>
     </dependency>
 
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-aspects</artifactId>
-      <version>${spring-version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
-      <optional>true</optional>
-    </dependency>
+<!--     <dependency> -->
+<!--       <groupId>org.springframework</groupId> -->
+<!--       <artifactId>spring-aspects</artifactId> -->
+<!--       <version>${spring-version}</version> -->
+<!--       <exclusions> -->
+<!--         <exclusion> -->
+<!--           <groupId>commons-logging</groupId> -->
+<!--           <artifactId>commons-logging</artifactId> -->
+<!--         </exclusion> -->
+<!--       </exclusions> -->
+<!--       <optional>true</optional> -->
+<!--     </dependency> -->
     
     <dependency>
       <groupId>org.aspectj</groupId>
@@ -318,5 +332,29 @@
     </dependency>
 
   </dependencies>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.7</version>
+        <configuration>
+          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <formats>
+            <format>html</format>
+            <format>xml</format>
+          </formats>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>
