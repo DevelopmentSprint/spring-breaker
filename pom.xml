@@ -23,7 +23,7 @@
   </parent>
   <groupId>com.developmentsprint</groupId>
   <artifactId>spring-breaker</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>Spring Circuit Breaker Library</name>
   <description>
