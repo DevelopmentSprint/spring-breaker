@@ -8,3 +8,22 @@ The Spring Breaker library provides a Spring based circuit breaker abstraction f
 ## Documentation
 
 The site documentation is available at [https://developmentsprint.github.io/spring-breaker]()
+
+## Binaries
+
+Binaries and dependency information for Maven, Ivy, Gradle and others can be found at [http://mvnrepository.com/](http://mvnrepository.com/)
+
+Example for Maven:
+
+```xml
+<dependency>
+    <groupId>com.developmentsprint</groupId>
+    <artifactId>spring-breaker</artifactId>
+    <version>x.y.z</version>
+</dependency>
+```
+and for Ivy:
+
+```xml
+<dependency org="com.developmentsprint" name="spring-breaker" rev="x.y.z" />
+```
