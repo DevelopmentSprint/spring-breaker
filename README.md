@@ -7,7 +7,7 @@ The Spring Breaker library provides a Spring based circuit breaker abstraction f
 
 ## Documentation
 
-The site documentation is available at [https://developmentsprint.github.io/spring-breaker]()
+The site documentation is available at [https://developmentsprint.github.io/spring-breaker/site/0.0.1/index.html](https://developmentsprint.github.io/spring-breaker/site/0.0.1/index.html)
 
 ## Binaries
 

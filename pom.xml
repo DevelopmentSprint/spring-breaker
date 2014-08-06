@@ -176,7 +176,9 @@
           <message>Creating site for ${project.artifactId}, ${project.version}</message>
           <path>${project.distributionManagement.site.url}</path>
           <merge>true</merge>
-          <dryRun>true</dryRun>
+          <server>github</server>
+          <repositoryName>spring-breaker</repositoryName>
+          <repositoryOwner>DevelopmentSprint</repositoryOwner>
         </configuration>
         <executions>
           <execution>
