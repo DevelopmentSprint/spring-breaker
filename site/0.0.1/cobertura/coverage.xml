@@ -1,0 +1,2765 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+
+<coverage line-rate="0.6604127579737336" branch-rate="0.5263157894736842" lines-covered="352" lines-valid="533" branches-covered="100" branches-valid="190" complexity="2.014388489208633" version="2.0.3" timestamp="1407291633182">
+	<sources>
+		<source>/Users/torr/Documents/workspaces/ds/spring-breaker/src/main/java</source>
+		<source>--source</source>
+	</sources>
+	<packages>
+		<package name="com.developmentsprint.spring.breaker" line-rate="0.42857142857142855" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="com.developmentsprint.spring.breaker.CircuitBreakerDefinition" filename="com/developmentsprint/spring/breaker/CircuitBreakerDefinition.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.CircuitBreakerException" filename="com/developmentsprint/spring/breaker/CircuitBreakerException.java" line-rate="0.6666666666666666" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="25" hits="0" branch="false"/>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;Ljava/lang/Throwable;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="33" hits="80" branch="false"/>
+								<line number="34" hits="80" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/Throwable;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="29" hits="16" branch="false"/>
+								<line number="30" hits="16" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="25" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="29" hits="16" branch="false"/>
+						<line number="30" hits="16" branch="false"/>
+						<line number="33" hits="80" branch="false"/>
+						<line number="34" hits="80" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.CircuitManager" filename="com/developmentsprint/spring/breaker/CircuitManager.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.CircuitManager$Invoker" filename="com/developmentsprint/spring/breaker/CircuitManager.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.CircuitOverloadException" filename="com/developmentsprint/spring/breaker/CircuitOverloadException.java" line-rate="0.5" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="0" branch="false"/>
+								<line number="24" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;Ljava/lang/Throwable;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="27" hits="80" branch="false"/>
+								<line number="28" hits="80" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="23" hits="0" branch="false"/>
+						<line number="24" hits="0" branch="false"/>
+						<line number="27" hits="80" branch="false"/>
+						<line number="28" hits="80" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.CircuitTimeoutException" filename="com/developmentsprint/spring/breaker/CircuitTimeoutException.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="0" branch="false"/>
+								<line number="24" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;Ljava/lang/Throwable;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="27" hits="0" branch="false"/>
+								<line number="28" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="23" hits="0" branch="false"/>
+						<line number="24" hits="0" branch="false"/>
+						<line number="27" hits="0" branch="false"/>
+						<line number="28" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.developmentsprint.spring.breaker.annotations" line-rate="0.7551020408163265" branch-rate="0.6911764705882353" complexity="2.5625">
+			<classes>
+				<class name="com.developmentsprint.spring.breaker.annotations.AbstractCircuitBreakerConfiguration" filename="com/developmentsprint/spring/breaker/annotations/AbstractCircuitBreakerConfiguration.java" line-rate="0.5789473684210527" branch-rate="0.375" complexity="4.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="40" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="reconcileCircuitManager" signature="()V" line-rate="0.4666666666666667" branch-rate="0.375">
+							<lines>
+								<line number="69" hits="8" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="70" hits="0" branch="false"/>
+								<line number="71" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="72" hits="0" branch="false"/>
+								<line number="77" hits="0" branch="false"/>
+								<line number="78" hits="0" branch="false"/>
+								<line number="80" hits="0" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="81" hits="8" branch="false"/>
+								<line number="82" hits="8" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="83" hits="0" branch="false"/>
+								<line number="87" hits="8" branch="false"/>
+								<line number="88" hits="8" branch="false"/>
+								<line number="90" hits="8" branch="false"/>
+								<line number="91" hits="0" branch="false"/>
+								<line number="94" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="setImportMetadata" signature="(Lorg/springframework/core/type/AnnotationMetadata;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="54" hits="8" branch="false"/>
+								<line number="55" hits="8" branch="false"/>
+								<line number="56" hits="8" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="40" hits="8" branch="false"/>
+						<line number="54" hits="8" branch="false"/>
+						<line number="55" hits="8" branch="false"/>
+						<line number="56" hits="8" branch="false"/>
+						<line number="69" hits="8" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="70" hits="0" branch="false"/>
+						<line number="71" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="72" hits="0" branch="false"/>
+						<line number="77" hits="0" branch="false"/>
+						<line number="78" hits="0" branch="false"/>
+						<line number="80" hits="0" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="81" hits="8" branch="false"/>
+						<line number="82" hits="8" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="83" hits="0" branch="false"/>
+						<line number="87" hits="8" branch="false"/>
+						<line number="88" hits="8" branch="false"/>
+						<line number="90" hits="8" branch="false"/>
+						<line number="91" hits="0" branch="false"/>
+						<line number="94" hits="8" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.AbstractFallbackCircuitBreakerAttributeSource" filename="com/developmentsprint/spring/breaker/annotations/AbstractFallbackCircuitBreakerAttributeSource.java" line-rate="0.9473684210526315" branch-rate="0.8181818181818182" complexity="3.5555555555555554">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="59" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="54" hits="24" branch="false"/>
+								<line number="66" hits="24" branch="false"/>
+								<line number="73" hits="24" branch="false"/>
+								<line number="209" hits="24" branch="false"/>
+							</lines>
+						</method>
+						<method name="allowPublicMethodsOnly" signature="()Z" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="203" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="computeCircuitBreakerAttribute" signature="(Ljava/lang/reflect/Method;Ljava/lang/Class;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="0.9411764705882353" branch-rate="0.8333333333333334">
+							<lines>
+								<line number="141" hits="1648" branch="true" condition-coverage="75% (3/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="142" hits="16" branch="false"/>
+								<line number="146" hits="1632" branch="false"/>
+								<line number="150" hits="1632" branch="false"/>
+								<line number="153" hits="1632" branch="false"/>
+								<line number="156" hits="1632" branch="false"/>
+								<line number="157" hits="1632" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="158" hits="117" branch="false"/>
+								<line number="162" hits="1514" branch="false"/>
+								<line number="163" hits="1514" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="164" hits="0" branch="false"/>
+								<line number="167" hits="1514" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="169" hits="1018" branch="false"/>
+								<line number="170" hits="1018" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="171" hits="24" branch="false"/>
+								<line number="174" hits="994" branch="false"/>
+								<line number="176" hits="496" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCacheKey" signature="(Ljava/lang/reflect/Method;Ljava/lang/Class;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="130" hits="1944" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCircuitBreakerAttribute" signature="(Ljava/lang/reflect/Method;Ljava/lang/Class;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="1.0" branch-rate="0.8">
+							<lines>
+								<line number="88" hits="1944" branch="false"/>
+								<line number="89" hits="1944" branch="false"/>
+								<line number="90" hits="1944" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="93" hits="296" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="94" hits="16" branch="false"/>
+								<line number="97" hits="280" branch="false"/>
+								<line number="102" hits="1648" branch="false"/>
+								<line number="104" hits="1648" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="105" hits="1506" branch="false"/>
+								<line number="108" hits="141" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="109" hits="140" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="110" hits="141" branch="false"/>
+								<line number="112" hits="142" branch="false"/>
+								<line number="114" hits="1648" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="54" hits="24" branch="false"/>
+						<line number="59" hits="8" branch="false"/>
+						<line number="66" hits="24" branch="false"/>
+						<line number="73" hits="24" branch="false"/>
+						<line number="88" hits="1944" branch="false"/>
+						<line number="89" hits="1944" branch="false"/>
+						<line number="90" hits="1944" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="93" hits="296" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="94" hits="16" branch="false"/>
+						<line number="97" hits="280" branch="false"/>
+						<line number="102" hits="1648" branch="false"/>
+						<line number="104" hits="1648" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="105" hits="1506" branch="false"/>
+						<line number="108" hits="141" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="109" hits="140" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="110" hits="141" branch="false"/>
+						<line number="112" hits="142" branch="false"/>
+						<line number="114" hits="1648" branch="false"/>
+						<line number="130" hits="1944" branch="false"/>
+						<line number="141" hits="1648" branch="true" condition-coverage="75% (3/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="142" hits="16" branch="false"/>
+						<line number="146" hits="1632" branch="false"/>
+						<line number="150" hits="1632" branch="false"/>
+						<line number="153" hits="1632" branch="false"/>
+						<line number="156" hits="1632" branch="false"/>
+						<line number="157" hits="1632" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="158" hits="117" branch="false"/>
+						<line number="162" hits="1514" branch="false"/>
+						<line number="163" hits="1514" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="164" hits="0" branch="false"/>
+						<line number="167" hits="1514" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="169" hits="1018" branch="false"/>
+						<line number="170" hits="1018" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="171" hits="24" branch="false"/>
+						<line number="174" hits="994" branch="false"/>
+						<line number="176" hits="496" branch="false"/>
+						<line number="203" hits="0" branch="false"/>
+						<line number="209" hits="24" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.AbstractFallbackCircuitBreakerAttributeSource$DefaultCacheKey" filename="com/developmentsprint/spring/breaker/annotations/AbstractFallbackCircuitBreakerAttributeSource.java" line-rate="0.8181818181818182" branch-rate="0.75" complexity="3.5555555555555554">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/reflect/Method;Ljava/lang/Class;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="215" hits="1944" branch="false"/>
+								<line number="216" hits="1944" branch="false"/>
+								<line number="217" hits="1944" branch="false"/>
+								<line number="218" hits="1944" branch="false"/>
+							</lines>
+						</method>
+						<method name="equals" signature="(Ljava/lang/Object;)Z" line-rate="0.6666666666666666" branch-rate="0.75">
+							<lines>
+								<line number="222" hits="6466" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="223" hits="0" branch="false"/>
+								<line number="225" hits="6466" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="226" hits="0" branch="false"/>
+								<line number="228" hits="6466" branch="false"/>
+								<line number="229" hits="6466" branch="true" condition-coverage="100% (4/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+										<condition number="1" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="hashCode" signature="()I" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="234" hits="3592" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="215" hits="1944" branch="false"/>
+						<line number="216" hits="1944" branch="false"/>
+						<line number="217" hits="1944" branch="false"/>
+						<line number="218" hits="1944" branch="false"/>
+						<line number="222" hits="6466" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="223" hits="0" branch="false"/>
+						<line number="225" hits="6466" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="226" hits="0" branch="false"/>
+						<line number="228" hits="6466" branch="false"/>
+						<line number="229" hits="6466" branch="true" condition-coverage="100% (4/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+								<condition number="1" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="234" hits="3592" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.AnnotationCircuitBreakerAttributeSource" filename="com/developmentsprint/spring/breaker/annotations/AnnotationCircuitBreakerAttributeSource.java" line-rate="0.5121951219512195" branch-rate="0.6666666666666666" complexity="1.7272727272727273">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="41" hits="24" branch="false"/>
+								<line number="42" hits="24" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/annotations/CircuitBreakerAnnotationParser;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="63" hits="0" branch="false"/>
+								<line number="64" hits="0" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+								<line number="66" hits="0" branch="false"/>
+								<line number="67" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/util/Set;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="89" hits="0" branch="false"/>
+								<line number="90" hits="0" branch="false"/>
+								<line number="91" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+								<line number="93" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Z)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="51" hits="24" branch="false"/>
+								<line number="52" hits="24" branch="false"/>
+								<line number="53" hits="24" branch="false"/>
+								<line number="54" hits="24" branch="false"/>
+								<line number="55" hits="24" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="([Lcom/developmentsprint/spring/breaker/annotations/CircuitBreakerAnnotationParser;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="75" hits="0" branch="false"/>
+								<line number="76" hits="0" branch="false"/>
+								<line number="77" hits="0" branch="false"/>
+								<line number="78" hits="0" branch="false"/>
+								<line number="79" hits="0" branch="false"/>
+								<line number="80" hits="0" branch="false"/>
+								<line number="81" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="allowPublicMethodsOnly" signature="()Z" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="132" hits="1648" branch="false"/>
+							</lines>
+						</method>
+						<method name="determineCircuitBreakerAttribute" signature="(Ljava/lang/reflect/AnnotatedElement;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="118" hits="5158" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="119" hits="5158" branch="false"/>
+								<line number="120" hits="5157" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="121" hits="141" branch="false"/>
+								<line number="123" hits="5016" branch="false"/>
+								<line number="124" hits="5016" branch="false"/>
+							</lines>
+						</method>
+						<method name="equals" signature="(Ljava/lang/Object;)Z" line-rate="0.6666666666666666" branch-rate="0.5">
+							<lines>
+								<line number="137" hits="24" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="138" hits="0" branch="false"/>
+								<line number="140" hits="24" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="141" hits="0" branch="false"/>
+								<line number="143" hits="24" branch="false"/>
+								<line number="144" hits="24" branch="true" condition-coverage="50% (2/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="findCircuitBreakerAttribute" signature="(Ljava/lang/Class;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="102" hits="2508" branch="false"/>
+							</lines>
+						</method>
+						<method name="findCircuitBreakerAttribute" signature="(Ljava/lang/reflect/Method;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="97" hits="2650" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCircuitBreakerAttribute" signature="(Ljava/lang/reflect/Method;Ljava/lang/Class;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="29" hits="1944" branch="false"/>
+							</lines>
+						</method>
+						<method name="hashCode" signature="()I" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="149" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="29" hits="1944" branch="false"/>
+						<line number="41" hits="24" branch="false"/>
+						<line number="42" hits="24" branch="false"/>
+						<line number="51" hits="24" branch="false"/>
+						<line number="52" hits="24" branch="false"/>
+						<line number="53" hits="24" branch="false"/>
+						<line number="54" hits="24" branch="false"/>
+						<line number="55" hits="24" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="64" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="66" hits="0" branch="false"/>
+						<line number="67" hits="0" branch="false"/>
+						<line number="75" hits="0" branch="false"/>
+						<line number="76" hits="0" branch="false"/>
+						<line number="77" hits="0" branch="false"/>
+						<line number="78" hits="0" branch="false"/>
+						<line number="79" hits="0" branch="false"/>
+						<line number="80" hits="0" branch="false"/>
+						<line number="81" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+						<line number="90" hits="0" branch="false"/>
+						<line number="91" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="93" hits="0" branch="false"/>
+						<line number="97" hits="2650" branch="false"/>
+						<line number="102" hits="2508" branch="false"/>
+						<line number="118" hits="5158" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="119" hits="5158" branch="false"/>
+						<line number="120" hits="5157" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="121" hits="141" branch="false"/>
+						<line number="123" hits="5016" branch="false"/>
+						<line number="124" hits="5016" branch="false"/>
+						<line number="132" hits="1648" branch="false"/>
+						<line number="137" hits="24" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="138" hits="0" branch="false"/>
+						<line number="140" hits="24" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="141" hits="0" branch="false"/>
+						<line number="143" hits="24" branch="false"/>
+						<line number="144" hits="24" branch="true" condition-coverage="50% (2/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="149" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.CircuitBreaker" filename="com/developmentsprint/spring/breaker/annotations/CircuitBreaker.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.CircuitBreakerAnnotationParser" filename="com/developmentsprint/spring/breaker/annotations/CircuitBreakerAnnotationParser.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.CircuitBreakerConfigurationSelector" filename="com/developmentsprint/spring/breaker/annotations/CircuitBreakerConfigurationSelector.java" line-rate="0.8" branch-rate="1.0" complexity="5.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="31" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="selectImports" signature="(Lorg/springframework/context/annotation/AdviceMode;)[Ljava/lang/String;" line-rate="0.75" branch-rate="1.0">
+							<lines>
+								<line number="43" hits="8" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="switch" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="45" hits="8" branch="false"/>
+								<line number="47" hits="0" branch="false"/>
+								<line number="49" hits="8" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="31" hits="8" branch="false"/>
+						<line number="43" hits="8" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="switch" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="45" hits="8" branch="false"/>
+						<line number="47" hits="0" branch="false"/>
+						<line number="49" hits="8" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.CircuitBreakerConfigurationSelector$1" filename="com/developmentsprint/spring/breaker/annotations/CircuitBreakerConfigurationSelector.java" line-rate="1.0" branch-rate="1.0" complexity="5.0">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="43" hits="8" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="43" hits="8" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.CircuitBreakerConfigurer" filename="com/developmentsprint/spring/breaker/annotations/CircuitBreakerConfigurer.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.CircuitProperty" filename="com/developmentsprint/spring/breaker/annotations/CircuitProperty.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.EnableCircuitBreakers" filename="com/developmentsprint/spring/breaker/annotations/EnableCircuitBreakers.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.ProxyCircuitBreakerConfiguration" filename="com/developmentsprint/spring/breaker/annotations/ProxyCircuitBreakerConfiguration.java" line-rate="1.0" branch-rate="0.5" complexity="1.3333333333333333">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="circuitBreakerAdvisor" signature="()Lcom/developmentsprint/spring/breaker/interceptor/BeanFactoryCircuitBreakerAttributeSourceAdvisor;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="43" hits="8" branch="false"/>
+								<line number="44" hits="8" branch="false"/>
+								<line number="45" hits="8" branch="false"/>
+								<line number="46" hits="8" branch="false"/>
+								<line number="47" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="circuitBreakerInterceptor" signature="()Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerInterceptor;" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="59" hits="8" branch="false"/>
+								<line number="60" hits="8" branch="false"/>
+								<line number="61" hits="8" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="62" hits="8" branch="false"/>
+								<line number="64" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="circuitBreakerOperationSource" signature="()Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="53" hits="8" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="36" hits="8" branch="false"/>
+						<line number="43" hits="8" branch="false"/>
+						<line number="44" hits="8" branch="false"/>
+						<line number="45" hits="8" branch="false"/>
+						<line number="46" hits="8" branch="false"/>
+						<line number="47" hits="8" branch="false"/>
+						<line number="53" hits="8" branch="false"/>
+						<line number="59" hits="8" branch="false"/>
+						<line number="60" hits="8" branch="false"/>
+						<line number="61" hits="8" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="62" hits="8" branch="false"/>
+						<line number="64" hits="8" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.annotations.SpringCircuitBreakerAnnotationParser" filename="com/developmentsprint/spring/breaker/annotations/SpringCircuitBreakerAnnotationParser.java" line-rate="0.85" branch-rate="0.6428571428571429" complexity="2.75">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="30" hits="24" branch="false"/>
+							</lines>
+						</method>
+						<method name="equals" signature="(Ljava/lang/Object;)Z" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="65" hits="24" branch="true" condition-coverage="50% (2/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="hashCode" signature="()I" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="70" hits="48" branch="false"/>
+							</lines>
+						</method>
+						<method name="parseCircuitBreakerAnnotation" signature="(Lcom/developmentsprint/spring/breaker/annotations/CircuitBreaker;Ljava/lang/reflect/AnnotatedElement;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="0.75" branch-rate="0.625">
+							<lines>
+								<line number="46" hits="142" branch="false"/>
+								<line number="47" hits="142" branch="true" condition-coverage="25% (1/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="48" hits="0" branch="false"/>
+								<line number="49" hits="0" branch="false"/>
+								<line number="50" hits="0" branch="false"/>
+								<line number="51" hits="142" branch="false"/>
+								<line number="53" hits="142" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="54" hits="61" branch="false"/>
+								<line number="55" hits="122" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="56" hits="62" branch="false"/>
+								<line number="58" hits="60" branch="false"/>
+								<line number="60" hits="142" branch="false"/>
+							</lines>
+						</method>
+						<method name="parseCircuitBreakerAnnotation" signature="(Ljava/lang/reflect/AnnotatedElement;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="35" hits="5158" branch="false"/>
+								<line number="36" hits="5158" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="37" hits="142" branch="false"/>
+								<line number="38" hits="142" branch="false"/>
+								<line number="41" hits="5016" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="30" hits="24" branch="false"/>
+						<line number="35" hits="5158" branch="false"/>
+						<line number="36" hits="5158" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="37" hits="142" branch="false"/>
+						<line number="38" hits="142" branch="false"/>
+						<line number="41" hits="5016" branch="false"/>
+						<line number="46" hits="142" branch="false"/>
+						<line number="47" hits="142" branch="true" condition-coverage="25% (1/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="48" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="false"/>
+						<line number="50" hits="0" branch="false"/>
+						<line number="51" hits="142" branch="false"/>
+						<line number="53" hits="142" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="54" hits="61" branch="false"/>
+						<line number="55" hits="122" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="56" hits="62" branch="false"/>
+						<line number="58" hits="60" branch="false"/>
+						<line number="60" hits="142" branch="false"/>
+						<line number="65" hits="24" branch="true" condition-coverage="50% (2/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="70" hits="48" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.developmentsprint.spring.breaker.aspectj" line-rate="0.0" branch-rate="0.0" complexity="2.0">
+			<classes>
+				<class name="com.developmentsprint.spring.breaker.aspectj.AbstractCircuitBreakerAspect" filename="com/developmentsprint/spring/breaker/aspectj/AbstractCircuitBreakerAspect.aj" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="47" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="56" hits="0" branch="false"/>
+								<line number="57" hits="0" branch="false"/>
+								<line number="58" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="ajc$around$com_developmentsprint_spring_breaker_aspectj_AbstractCircuitBreakerAspect$1$ea8a2253" signature="(Ljava/lang/Object;Lorg/aspectj/runtime/internal/AroundClosure;Lorg/aspectj/lang/JoinPoint;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="63" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+								<line number="99" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="ajc$around$com_developmentsprint_spring_breaker_aspectj_AbstractCircuitBreakerAspect$1$ea8a2253proceed" signature="(Ljava/lang/Object;Lorg/aspectj/runtime/internal/AroundClosure;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="61" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="47" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="57" hits="0" branch="false"/>
+						<line number="58" hits="0" branch="false"/>
+						<line number="61" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="99" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.aspectj.AbstractCircuitBreakerAspect$AbstractCircuitBreakerAspect$1" filename="com/developmentsprint/spring/breaker/aspectj/AbstractCircuitBreakerAspect.aj" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/aspectj/AbstractCircuitBreakerAspect;Lorg/aspectj/lang/JoinPoint;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="1" hits="0" branch="false"/>
+								<line number="63" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getArguments" signature="()[Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="82" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getMethod" signature="()Ljava/lang/reflect/Method;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="87" hits="0" branch="false"/>
+								<line number="88" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getStaticPart" signature="()Ljava/lang/reflect/AccessibleObject;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="77" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getThis" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="72" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="proceed" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="67" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="1" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="67" hits="0" branch="false"/>
+						<line number="72" hits="0" branch="false"/>
+						<line number="77" hits="0" branch="false"/>
+						<line number="82" hits="0" branch="false"/>
+						<line number="87" hits="0" branch="false"/>
+						<line number="88" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.aspectj.AbstractCircuitBreakerAspect$AbstractCircuitBreakerAspect$2" filename="com/developmentsprint/spring/breaker/aspectj/AbstractCircuitBreakerAspect.aj" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/aspectj/AbstractCircuitBreakerAspect;Lorg/aopalliance/intercept/MethodInvocation;Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;Ljava/lang/Object;Lorg/aspectj/runtime/internal/AroundClosure;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="1" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="invoke" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="95" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="1" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="95" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.aspectj.AnnotationCircuitBreakerAspect" filename="com/developmentsprint/spring/breaker/aspectj/AnnotationCircuitBreakerAspect.aj" line-rate="0.0" branch-rate="0.0" complexity="0.0">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="40" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="43" hits="0" branch="false"/>
+								<line number="44" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="ajc$pointcut$$circuitBreakerMethodExecution$92d" signature="(Ljava/lang/Object;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="54" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="ajc$pointcut$$executionOfCircuitBreakerMethod$842" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="49" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="ajc$postClinit" signature="()V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="1" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="aspectOf" signature="()Lcom/developmentsprint/spring/breaker/aspectj/AnnotationCircuitBreakerAspect;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="hasAspect" signature="()Z" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="1" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="40" hits="0" branch="false"/>
+						<line number="43" hits="0" branch="false"/>
+						<line number="44" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="false"/>
+						<line number="54" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.aspectj.AspectJCircuitBreakerConfiguration" filename="com/developmentsprint/spring/breaker/aspectj/AspectJCircuitBreakerConfiguration.java" line-rate="0.0" branch-rate="0.0" complexity="2.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="circuitBreakerAspect" signature="()Lcom/developmentsprint/spring/breaker/aspectj/AnnotationCircuitBreakerAspect;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="43" hits="0" branch="false"/>
+								<line number="44" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="45" hits="0" branch="false"/>
+								<line number="47" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="36" hits="0" branch="false"/>
+						<line number="43" hits="0" branch="false"/>
+						<line number="44" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="45" hits="0" branch="false"/>
+						<line number="47" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.developmentsprint.spring.breaker.config" line-rate="0.9487179487179487" branch-rate="0.6666666666666666" complexity="2.125">
+			<classes>
+				<class name="com.developmentsprint.spring.breaker.config.AnnotationDrivenBreakerBeanDefinitionParser" filename="com/developmentsprint/spring/breaker/config/AnnotationDrivenBreakerBeanDefinitionParser.java" line-rate="1.0" branch-rate="0.5" complexity="2.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="71" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="access$000" signature="(Lorg/w3c/dom/Element;Lorg/springframework/beans/factory/config/BeanDefinition;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="44" hits="48" branch="false"/>
+							</lines>
+						</method>
+						<method name="parse" signature="(Lorg/w3c/dom/Element;Lorg/springframework/beans/factory/xml/ParserContext;)Lorg/springframework/beans/factory/config/BeanDefinition;" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="52" hits="16" branch="false"/>
+								<line number="53" hits="16" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="58" hits="16" branch="false"/>
+								<line number="60" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="parseCircuitManagerProperty" signature="(Lorg/w3c/dom/Element;Lorg/springframework/beans/factory/config/BeanDefinition;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="64" hits="16" branch="false"/>
+								<line number="66" hits="16" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="44" hits="48" branch="false"/>
+						<line number="52" hits="16" branch="false"/>
+						<line number="53" hits="16" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="58" hits="16" branch="false"/>
+						<line number="60" hits="16" branch="false"/>
+						<line number="64" hits="16" branch="false"/>
+						<line number="66" hits="16" branch="false"/>
+						<line number="71" hits="32" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.config.AnnotationDrivenBreakerBeanDefinitionParser$AopAutoProxyConfigurer" filename="com/developmentsprint/spring/breaker/config/AnnotationDrivenBreakerBeanDefinitionParser.java" line-rate="0.9259259259259259" branch-rate="0.5" complexity="2.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="71" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="configureAutoProxyCreator" signature="(Lorg/w3c/dom/Element;Lorg/springframework/beans/factory/xml/ParserContext;)V" line-rate="0.9615384615384616" branch-rate="0.5">
+							<lines>
+								<line number="74" hits="16" branch="false"/>
+								<line number="76" hits="16" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="77" hits="16" branch="false"/>
+								<line number="80" hits="16" branch="false"/>
+								<line number="81" hits="16" branch="false"/>
+								<line number="82" hits="16" branch="false"/>
+								<line number="83" hits="16" branch="false"/>
+								<line number="86" hits="16" branch="false"/>
+								<line number="87" hits="16" branch="false"/>
+								<line number="88" hits="16" branch="false"/>
+								<line number="89" hits="16" branch="false"/>
+								<line number="90" hits="16" branch="false"/>
+								<line number="91" hits="16" branch="false"/>
+								<line number="94" hits="16" branch="false"/>
+								<line number="95" hits="16" branch="false"/>
+								<line number="96" hits="16" branch="false"/>
+								<line number="97" hits="16" branch="false"/>
+								<line number="98" hits="16" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="99" hits="0" branch="false"/>
+								<line number="101" hits="16" branch="false"/>
+								<line number="103" hits="16" branch="false"/>
+								<line number="105" hits="16" branch="false"/>
+								<line number="106" hits="16" branch="false"/>
+								<line number="107" hits="16" branch="false"/>
+								<line number="108" hits="16" branch="false"/>
+								<line number="110" hits="16" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="71" hits="0" branch="false"/>
+						<line number="74" hits="16" branch="false"/>
+						<line number="76" hits="16" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="77" hits="16" branch="false"/>
+						<line number="80" hits="16" branch="false"/>
+						<line number="81" hits="16" branch="false"/>
+						<line number="82" hits="16" branch="false"/>
+						<line number="83" hits="16" branch="false"/>
+						<line number="86" hits="16" branch="false"/>
+						<line number="87" hits="16" branch="false"/>
+						<line number="88" hits="16" branch="false"/>
+						<line number="89" hits="16" branch="false"/>
+						<line number="90" hits="16" branch="false"/>
+						<line number="91" hits="16" branch="false"/>
+						<line number="94" hits="16" branch="false"/>
+						<line number="95" hits="16" branch="false"/>
+						<line number="96" hits="16" branch="false"/>
+						<line number="97" hits="16" branch="false"/>
+						<line number="98" hits="16" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="99" hits="0" branch="false"/>
+						<line number="101" hits="16" branch="false"/>
+						<line number="103" hits="16" branch="false"/>
+						<line number="105" hits="16" branch="false"/>
+						<line number="106" hits="16" branch="false"/>
+						<line number="107" hits="16" branch="false"/>
+						<line number="108" hits="16" branch="false"/>
+						<line number="110" hits="16" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.config.BreakerAdviceParser" filename="com/developmentsprint/spring/breaker/config/BreakerAdviceParser.java" line-rate="0.9473684210526315" branch-rate="0.8" complexity="2.6666666666666665">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="37" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="doParse" signature="(Lorg/w3c/dom/Element;Lorg/springframework/beans/factory/xml/ParserContext;Lorg/springframework/beans/factory/support/BeanDefinitionBuilder;)V" line-rate="0.875" branch-rate="0.5">
+							<lines>
+								<line number="54" hits="16" branch="false"/>
+								<line number="56" hits="16" branch="false"/>
+								<line number="57" hits="16" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="59" hits="16" branch="false"/>
+								<line number="60" hits="16" branch="false"/>
+								<line number="61" hits="16" branch="false"/>
+								<line number="64" hits="0" branch="false"/>
+								<line number="67" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="getBeanClass" signature="(Lorg/w3c/dom/Element;)Ljava/lang/Class;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="49" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="parseAttributeSource" signature="(Ljava/util/List;Lorg/springframework/beans/factory/xml/ParserContext;)Lorg/springframework/beans/factory/support/RootBeanDefinition;" line-rate="0.9642857142857143" branch-rate="0.875">
+							<lines>
+								<line number="70" hits="16" branch="false"/>
+								<line number="73" hits="16" branch="false"/>
+								<line number="75" hits="16" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="76" hits="32" branch="false"/>
+								<line number="77" hits="32" branch="false"/>
+								<line number="78" hits="32" branch="false"/>
+								<line number="80" hits="32" branch="false"/>
+								<line number="81" hits="32" branch="false"/>
+								<line number="83" hits="32" branch="false"/>
+								<line number="84" hits="32" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="85" hits="0" branch="false"/>
+								<line number="87" hits="32" branch="false"/>
+								<line number="90" hits="32" branch="false"/>
+								<line number="91" hits="32" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="92" hits="8" branch="false"/>
+								<line number="93" hits="8" branch="false"/>
+								<line number="94" hits="8" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="95" hits="8" branch="false"/>
+								<line number="96" hits="8" branch="false"/>
+								<line number="97" hits="8" branch="false"/>
+								<line number="98" hits="8" branch="false"/>
+								<line number="99" hits="8" branch="false"/>
+								<line number="102" hits="32" branch="false"/>
+								<line number="103" hits="32" branch="false"/>
+								<line number="105" hits="16" branch="false"/>
+								<line number="106" hits="16" branch="false"/>
+								<line number="107" hits="16" branch="false"/>
+								<line number="108" hits="16" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="37" hits="32" branch="false"/>
+						<line number="49" hits="16" branch="false"/>
+						<line number="54" hits="16" branch="false"/>
+						<line number="56" hits="16" branch="false"/>
+						<line number="57" hits="16" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="59" hits="16" branch="false"/>
+						<line number="60" hits="16" branch="false"/>
+						<line number="61" hits="16" branch="false"/>
+						<line number="64" hits="0" branch="false"/>
+						<line number="67" hits="16" branch="false"/>
+						<line number="70" hits="16" branch="false"/>
+						<line number="73" hits="16" branch="false"/>
+						<line number="75" hits="16" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="76" hits="32" branch="false"/>
+						<line number="77" hits="32" branch="false"/>
+						<line number="78" hits="32" branch="false"/>
+						<line number="80" hits="32" branch="false"/>
+						<line number="81" hits="32" branch="false"/>
+						<line number="83" hits="32" branch="false"/>
+						<line number="84" hits="32" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="85" hits="0" branch="false"/>
+						<line number="87" hits="32" branch="false"/>
+						<line number="90" hits="32" branch="false"/>
+						<line number="91" hits="32" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="92" hits="8" branch="false"/>
+						<line number="93" hits="8" branch="false"/>
+						<line number="94" hits="8" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="95" hits="8" branch="false"/>
+						<line number="96" hits="8" branch="false"/>
+						<line number="97" hits="8" branch="false"/>
+						<line number="98" hits="8" branch="false"/>
+						<line number="99" hits="8" branch="false"/>
+						<line number="102" hits="32" branch="false"/>
+						<line number="103" hits="32" branch="false"/>
+						<line number="105" hits="16" branch="false"/>
+						<line number="106" hits="16" branch="false"/>
+						<line number="107" hits="16" branch="false"/>
+						<line number="108" hits="16" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.config.BreakerNamespaceHandler" filename="com/developmentsprint/spring/breaker/config/BreakerNamespaceHandler.java" line-rate="1.0" branch-rate="0.5" complexity="1.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="29" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="extractCircuitManager" signature="(Lorg/w3c/dom/Element;)Ljava/lang/String;" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="42" hits="32" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="init" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="37" hits="32" branch="false"/>
+								<line number="38" hits="32" branch="false"/>
+								<line number="39" hits="32" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="29" hits="32" branch="false"/>
+						<line number="37" hits="32" branch="false"/>
+						<line number="38" hits="32" branch="false"/>
+						<line number="39" hits="32" branch="false"/>
+						<line number="42" hits="32" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.developmentsprint.spring.breaker.hystrix" line-rate="0.863013698630137" branch-rate="0.7647058823529411" complexity="5.5">
+			<classes>
+				<class name="com.developmentsprint.spring.breaker.hystrix.HystrixCircuitManager" filename="com/developmentsprint/spring/breaker/hystrix/HystrixCircuitManager.java" line-rate="0.8666666666666667" branch-rate="0.8461538461538461" complexity="5.5">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="44" hits="8" branch="false"/>
+								<line number="52" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="42" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="determineCommandName" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="154" hits="184" branch="false"/>
+							</lines>
+						</method>
+						<method name="determineFallback" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;)Lcom/developmentsprint/spring/breaker/hystrix/fallback/HystrixFallback;" line-rate="0.7333333333333333" branch-rate="1.0">
+							<lines>
+								<line number="159" hits="184" branch="false"/>
+								<line number="160" hits="184" branch="false"/>
+								<line number="161" hits="184" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="162" hits="176" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="163" hits="16" branch="false"/>
+								<line number="167" hits="184" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="168" hits="168" branch="false"/>
+								<line number="173" hits="16" branch="false"/>
+								<line number="174" hits="0" branch="false"/>
+								<line number="175" hits="0" branch="false"/>
+								<line number="176" hits="16" branch="false"/>
+								<line number="179" hits="16" branch="false"/>
+								<line number="180" hits="16" branch="false"/>
+								<line number="181" hits="0" branch="false"/>
+								<line number="182" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="determineGroupName" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;)Ljava/lang/String;" line-rate="0.8" branch-rate="0.75">
+							<lines>
+								<line number="134" hits="184" branch="false"/>
+								<line number="135" hits="184" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="136" hits="176" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="137" hits="0" branch="false"/>
+								<line number="140" hits="184" branch="false"/>
+							</lines>
+						</method>
+						<method name="determineThreadPoolName" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;)Ljava/lang/String;" line-rate="0.8" branch-rate="0.75">
+							<lines>
+								<line number="144" hits="184" branch="false"/>
+								<line number="145" hits="184" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="146" hits="176" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="147" hits="0" branch="false"/>
+								<line number="150" hits="184" branch="false"/>
+							</lines>
+						</method>
+						<method name="execute" signature="(Lcom/developmentsprint/spring/breaker/CircuitManager$Invoker;)Ljava/lang/Object;" line-rate="0.9354838709677419" branch-rate="0.8333333333333334">
+							<lines>
+								<line number="57" hits="184" branch="false"/>
+								<line number="59" hits="184" branch="false"/>
+								<line number="60" hits="184" branch="false"/>
+								<line number="61" hits="184" branch="false"/>
+								<line number="63" hits="184" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="64" hits="37" branch="false"/>
+								<line number="65" hits="37" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="66" hits="32" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="67" hits="24" branch="false"/>
+								<line number="68" hits="24" branch="false"/>
+								<line number="69" hits="24" branch="false"/>
+								<line number="70" hits="24" branch="false"/>
+								<line number="71" hits="24" branch="false"/>
+								<line number="72" hits="24" branch="false"/>
+								<line number="73" hits="24" branch="false"/>
+								<line number="74" hits="32" branch="false"/>
+								<line number="76" hits="37" branch="false"/>
+								<line number="79" hits="184" branch="false"/>
+								<line number="81" hits="184" branch="false"/>
+								<line number="87" hits="184" branch="false"/>
+								<line number="92" hits="184" branch="false"/>
+								<line number="119" hits="184" branch="false"/>
+								<line number="120" hits="87" branch="false"/>
+								<line number="121" hits="87" branch="false"/>
+								<line number="122" hits="88" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="123" hits="0" branch="false"/>
+								<line number="124" hits="87" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="125" hits="0" branch="false"/>
+								<line number="126" hits="87" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="127" hits="80" branch="false"/>
+								<line number="129" hits="8" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="42" hits="16" branch="false"/>
+						<line number="44" hits="8" branch="false"/>
+						<line number="52" hits="8" branch="false"/>
+						<line number="57" hits="184" branch="false"/>
+						<line number="59" hits="184" branch="false"/>
+						<line number="60" hits="184" branch="false"/>
+						<line number="61" hits="184" branch="false"/>
+						<line number="63" hits="184" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="64" hits="37" branch="false"/>
+						<line number="65" hits="37" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="66" hits="32" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="67" hits="24" branch="false"/>
+						<line number="68" hits="24" branch="false"/>
+						<line number="69" hits="24" branch="false"/>
+						<line number="70" hits="24" branch="false"/>
+						<line number="71" hits="24" branch="false"/>
+						<line number="72" hits="24" branch="false"/>
+						<line number="73" hits="24" branch="false"/>
+						<line number="74" hits="32" branch="false"/>
+						<line number="76" hits="37" branch="false"/>
+						<line number="79" hits="184" branch="false"/>
+						<line number="81" hits="184" branch="false"/>
+						<line number="87" hits="184" branch="false"/>
+						<line number="92" hits="184" branch="false"/>
+						<line number="119" hits="184" branch="false"/>
+						<line number="120" hits="87" branch="false"/>
+						<line number="121" hits="87" branch="false"/>
+						<line number="122" hits="88" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="123" hits="0" branch="false"/>
+						<line number="124" hits="87" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="125" hits="0" branch="false"/>
+						<line number="126" hits="87" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="127" hits="80" branch="false"/>
+						<line number="129" hits="8" branch="false"/>
+						<line number="134" hits="184" branch="false"/>
+						<line number="135" hits="184" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="136" hits="176" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="137" hits="0" branch="false"/>
+						<line number="140" hits="184" branch="false"/>
+						<line number="144" hits="184" branch="false"/>
+						<line number="145" hits="184" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="146" hits="176" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="147" hits="0" branch="false"/>
+						<line number="150" hits="184" branch="false"/>
+						<line number="154" hits="184" branch="false"/>
+						<line number="159" hits="184" branch="false"/>
+						<line number="160" hits="184" branch="false"/>
+						<line number="161" hits="184" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="162" hits="176" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="163" hits="16" branch="false"/>
+						<line number="167" hits="184" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="168" hits="168" branch="false"/>
+						<line number="173" hits="16" branch="false"/>
+						<line number="174" hits="0" branch="false"/>
+						<line number="175" hits="0" branch="false"/>
+						<line number="176" hits="16" branch="false"/>
+						<line number="179" hits="16" branch="false"/>
+						<line number="180" hits="16" branch="false"/>
+						<line number="181" hits="0" branch="false"/>
+						<line number="182" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.hystrix.HystrixCircuitManager$1" filename="com/developmentsprint/spring/breaker/hystrix/HystrixCircuitManager.java" line-rate="1.0" branch-rate="1.0" complexity="5.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/hystrix/HystrixCircuitManager;Lcom/developmentsprint/spring/breaker/CircuitManager$Invoker;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="81" hits="183" branch="false"/>
+							</lines>
+						</method>
+						<method name="toString" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="83" hits="184" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="81" hits="183" branch="false"/>
+						<line number="83" hits="184" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.hystrix.HystrixCircuitManager$2" filename="com/developmentsprint/spring/breaker/hystrix/HystrixCircuitManager.java" line-rate="0.8181818181818182" branch-rate="0.5" complexity="5.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/hystrix/HystrixCircuitManager;Lcom/netflix/hystrix/HystrixCommand$Setter;Lcom/developmentsprint/spring/breaker/CircuitManager$Invoker;Lcom/developmentsprint/spring/breaker/hystrix/fallback/HystrixFallback;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="92" hits="184" branch="false"/>
+							</lines>
+						</method>
+						<method name="getFallback" signature="()Ljava/lang/Object;" line-rate="0.6" branch-rate="0.5">
+							<lines>
+								<line number="108" hits="104" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="109" hits="0" branch="false"/>
+								<line number="110" hits="104" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="111" hits="0" branch="false"/>
+								<line number="113" hits="104" branch="false"/>
+							</lines>
+						</method>
+						<method name="run" signature="()Ljava/lang/Object;" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="97" hits="104" branch="false"/>
+								<line number="98" hits="8" branch="false"/>
+								<line number="99" hits="8" branch="true" condition-coverage="50% (2/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="100" hits="8" branch="false"/>
+								<line number="102" hits="8" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="92" hits="184" branch="false"/>
+						<line number="97" hits="104" branch="false"/>
+						<line number="98" hits="8" branch="false"/>
+						<line number="99" hits="8" branch="true" condition-coverage="50% (2/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="100" hits="8" branch="false"/>
+						<line number="102" hits="8" branch="false"/>
+						<line number="108" hits="104" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="109" hits="0" branch="false"/>
+						<line number="110" hits="104" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="111" hits="0" branch="false"/>
+						<line number="113" hits="104" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.developmentsprint.spring.breaker.hystrix.fallback" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="com.developmentsprint.spring.breaker.hystrix.fallback.FailFastFallback" filename="com/developmentsprint/spring/breaker/hystrix/fallback/FailFastFallback.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="19" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="fallback" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="24" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="19" hits="0" branch="false"/>
+						<line number="24" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.hystrix.fallback.FailSilentFallback" filename="com/developmentsprint/spring/breaker/hystrix/fallback/FailSilentFallback.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="19" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="fallback" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="24" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="19" hits="0" branch="false"/>
+						<line number="24" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.hystrix.fallback.HystrixFallback" filename="com/developmentsprint/spring/breaker/hystrix/fallback/HystrixFallback.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.developmentsprint.spring.breaker.interceptor" line-rate="0.5950413223140496" branch-rate="0.3181818181818182" complexity="1.7954545454545454">
+			<classes>
+				<class name="com.developmentsprint.spring.breaker.interceptor.AopAllianceInvoker" filename="com/developmentsprint/spring/breaker/interceptor/AopAllianceInvoker.java" line-rate="0.5625" branch-rate="0.21428571428571427" complexity="2.7142857142857144">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lorg/aopalliance/intercept/MethodInvocation;Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;)V" line-rate="0.9090909090909091" branch-rate="0.25">
+							<lines>
+								<line number="41" hits="264" branch="false"/>
+								<line number="42" hits="264" branch="false"/>
+								<line number="44" hits="264" branch="false"/>
+								<line number="47" hits="264" branch="false"/>
+								<line number="48" hits="264" branch="true" condition-coverage="25% (1/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="49" hits="0" branch="false"/>
+								<line number="51" hits="264" branch="false"/>
+								<line number="53" hits="264" branch="false"/>
+								<line number="55" hits="264" branch="false"/>
+								<line number="57" hits="264" branch="false"/>
+								<line number="58" hits="264" branch="false"/>
+							</lines>
+						</method>
+						<method name="getArguments" signature="()[Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="94" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCircuitBreakerAttribute" signature="()Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="0.3333333333333333" branch-rate="0.2">
+							<lines>
+								<line number="62" hits="264" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="63" hits="264" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+								<line number="67" hits="264" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="68" hits="0" branch="false"/>
+								<line number="69" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="70" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="71" hits="0" branch="false"/>
+								<line number="73" hits="0" branch="false"/>
+								<line number="75" hits="0" branch="false"/>
+								<line number="76" hits="0" branch="false"/>
+								<line number="78" hits="264" branch="false"/>
+							</lines>
+						</method>
+						<method name="getMethod" signature="()Ljava/lang/reflect/Method;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="82" hits="183" branch="false"/>
+							</lines>
+						</method>
+						<method name="getTarget" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="86" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getTargetClass" signature="()Ljava/lang/Class;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="90" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="invoke" signature="()Ljava/lang/Object;" line-rate="0.6" branch-rate="1.0">
+							<lines>
+								<line number="100" hits="184" branch="false"/>
+								<line number="101" hits="0" branch="false"/>
+								<line number="102" hits="0" branch="false"/>
+								<line number="103" hits="8" branch="false"/>
+								<line number="104" hits="8" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="41" hits="264" branch="false"/>
+						<line number="42" hits="264" branch="false"/>
+						<line number="44" hits="264" branch="false"/>
+						<line number="47" hits="264" branch="false"/>
+						<line number="48" hits="264" branch="true" condition-coverage="25% (1/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="49" hits="0" branch="false"/>
+						<line number="51" hits="264" branch="false"/>
+						<line number="53" hits="264" branch="false"/>
+						<line number="55" hits="264" branch="false"/>
+						<line number="57" hits="264" branch="false"/>
+						<line number="58" hits="264" branch="false"/>
+						<line number="62" hits="264" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="63" hits="264" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="67" hits="264" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="68" hits="0" branch="false"/>
+						<line number="69" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="70" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="71" hits="0" branch="false"/>
+						<line number="73" hits="0" branch="false"/>
+						<line number="75" hits="0" branch="false"/>
+						<line number="76" hits="0" branch="false"/>
+						<line number="78" hits="264" branch="false"/>
+						<line number="82" hits="183" branch="false"/>
+						<line number="86" hits="0" branch="false"/>
+						<line number="90" hits="0" branch="false"/>
+						<line number="94" hits="0" branch="false"/>
+						<line number="100" hits="184" branch="false"/>
+						<line number="101" hits="0" branch="false"/>
+						<line number="102" hits="0" branch="false"/>
+						<line number="103" hits="8" branch="false"/>
+						<line number="104" hits="8" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.BeanFactoryCircuitBreakerAttributeSourceAdvisor" filename="com/developmentsprint/spring/breaker/interceptor/BeanFactoryCircuitBreakerAttributeSourceAdvisor.java" line-rate="0.7142857142857143" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="34" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="access$000" signature="(Lcom/developmentsprint/spring/breaker/interceptor/BeanFactoryCircuitBreakerAttributeSourceAdvisor;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="30" hits="360" branch="false"/>
+							</lines>
+						</method>
+						<method name="getPointcut" signature="()Lorg/springframework/aop/Pointcut;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="57" hits="168" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCircuitBreakerOperationSource" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="46" hits="8" branch="false"/>
+								<line number="47" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="setClassFilter" signature="(Lorg/springframework/aop/ClassFilter;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="53" hits="0" branch="false"/>
+								<line number="54" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="30" hits="360" branch="false"/>
+						<line number="34" hits="8" branch="false"/>
+						<line number="46" hits="8" branch="false"/>
+						<line number="47" hits="8" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+						<line number="54" hits="0" branch="false"/>
+						<line number="57" hits="168" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.BeanFactoryCircuitBreakerAttributeSourceAdvisor$1" filename="com/developmentsprint/spring/breaker/interceptor/BeanFactoryCircuitBreakerAttributeSourceAdvisor.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/interceptor/BeanFactoryCircuitBreakerAttributeSourceAdvisor;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="34" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCircuitBreakerAttributeSource" signature="()Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="37" hits="352" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="34" hits="8" branch="false"/>
+						<line number="37" hits="352" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttribute" filename="com/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttributeSource" filename="com/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttributeSourceAdvisor" filename="com/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSourceAdvisor.java" line-rate="0.6153846153846154" branch-rate="1.0" complexity="1.1428571428571428">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="42" hits="16" branch="false"/>
+								<line number="44" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerInterceptor;)V" line-rate="0.25" branch-rate="1.0">
+							<lines>
+								<line number="29" hits="16" branch="false"/>
+								<line number="52" hits="0" branch="false"/>
+								<line number="53" hits="0" branch="false"/>
+								<line number="54" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="access$000" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSourceAdvisor;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerInterceptor;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="2832" branch="false"/>
+							</lines>
+						</method>
+						<method name="getAdvice" signature="()Lorg/aopalliance/aop/Advice;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="71" hits="262" branch="false"/>
+							</lines>
+						</method>
+						<method name="getPointcut" signature="()Lorg/springframework/aop/Pointcut;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="75" hits="398" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCircuitBreakerInterceptor" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerInterceptor;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="60" hits="16" branch="false"/>
+								<line number="61" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="setClassFilter" signature="(Lorg/springframework/aop/ClassFilter;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="67" hits="0" branch="false"/>
+								<line number="68" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="23" hits="2832" branch="false"/>
+						<line number="29" hits="16" branch="false"/>
+						<line number="42" hits="16" branch="false"/>
+						<line number="44" hits="16" branch="false"/>
+						<line number="52" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+						<line number="54" hits="0" branch="false"/>
+						<line number="60" hits="16" branch="false"/>
+						<line number="61" hits="16" branch="false"/>
+						<line number="67" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="false"/>
+						<line number="71" hits="262" branch="false"/>
+						<line number="75" hits="398" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttributeSourceAdvisor$1" filename="com/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSourceAdvisor.java" line-rate="1.0" branch-rate="0.5" complexity="1.1428571428571428">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSourceAdvisor;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="29" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCircuitBreakerAttributeSource" signature="()Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="35" hits="1416" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="29" hits="16" branch="false"/>
+						<line number="35" hits="1416" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttributeSourcePointcut" filename="com/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSourcePointcut.java" line-rate="0.6363636363636364" branch-rate="0.625" complexity="2.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="24" hits="24" branch="false"/>
+							</lines>
+						</method>
+						<method name="equals" signature="(Ljava/lang/Object;)Z" line-rate="0.6666666666666666" branch-rate="0.5">
+							<lines>
+								<line number="36" hits="24" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="37" hits="0" branch="false"/>
+								<line number="39" hits="24" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="40" hits="0" branch="false"/>
+								<line number="42" hits="24" branch="false"/>
+								<line number="43" hits="24" branch="false"/>
+							</lines>
+						</method>
+						<method name="hashCode" signature="()I" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="48" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="matches" signature="(Ljava/lang/reflect/Method;Ljava/lang/Class;)Z" line-rate="1.0" branch-rate="0.75">
+							<lines>
+								<line number="30" hits="1720" branch="false"/>
+								<line number="31" hits="1720" branch="true" condition-coverage="75% (3/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="toString" signature="()Ljava/lang/String;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="53" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="24" hits="24" branch="false"/>
+						<line number="30" hits="1720" branch="false"/>
+						<line number="31" hits="1720" branch="true" condition-coverage="75% (3/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="36" hits="24" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="37" hits="0" branch="false"/>
+						<line number="39" hits="24" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="40" hits="0" branch="false"/>
+						<line number="42" hits="24" branch="false"/>
+						<line number="43" hits="24" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.CircuitBreakerInterceptor" filename="com/developmentsprint/spring/breaker/interceptor/CircuitBreakerInterceptor.java" line-rate="0.7142857142857143" branch-rate="1.0" complexity="6.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="40" hits="40" branch="false"/>
+							</lines>
+						</method>
+						<method name="invoke" signature="(Lorg/aopalliance/intercept/MethodInvocation;)Ljava/lang/Object;" line-rate="0.6666666666666666" branch-rate="1.0">
+							<lines>
+								<line number="47" hits="264" branch="false"/>
+								<line number="50" hits="264" branch="false"/>
+								<line number="51" hits="88" branch="false"/>
+								<line number="52" hits="88" branch="false"/>
+								<line number="53" hits="0" branch="false"/>
+								<line number="54" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="40" hits="40" branch="false"/>
+						<line number="47" hits="264" branch="false"/>
+						<line number="50" hits="264" branch="false"/>
+						<line number="51" hits="88" branch="false"/>
+						<line number="52" hits="88" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+						<line number="54" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.DefaultCircuitBreakerAttribute" filename="com/developmentsprint/spring/breaker/interceptor/DefaultCircuitBreakerAttribute.java" line-rate="0.45454545454545453" branch-rate="0.5" complexity="1.2">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="31" hits="182" branch="false"/>
+								<line number="32" hits="182" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="39" hits="0" branch="false"/>
+								<line number="40" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getAttributeDescription" signature="()Ljava/lang/StringBuilder;" line-rate="0.75" branch-rate="0.5">
+							<lines>
+								<line number="64" hits="32" branch="false"/>
+								<line number="65" hits="32" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="66" hits="0" branch="false"/>
+								<line number="68" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="getQualifier" signature="()Ljava/lang/String;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="55" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setQualifier" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="48" hits="0" branch="false"/>
+								<line number="49" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="31" hits="182" branch="false"/>
+						<line number="32" hits="182" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="40" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="false"/>
+						<line number="55" hits="0" branch="false"/>
+						<line number="64" hits="32" branch="false"/>
+						<line number="65" hits="32" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="66" hits="0" branch="false"/>
+						<line number="68" hits="32" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.NameMatchCircuitBreakerAttributeSource" filename="com/developmentsprint/spring/breaker/interceptor/NameMatchCircuitBreakerAttributeSource.java" line-rate="0.5" branch-rate="0.2222222222222222" complexity="2.5714285714285716">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="43" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="16" branch="false"/>
+								<line number="46" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="addCircuitBreakerAttributeMethod" signature="(Ljava/lang/String;Lcom/developmentsprint/spring/breaker/interceptor/RuleBasedCircuitBreakerAttribute;)V" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="71" hits="32" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="72" hits="32" branch="false"/>
+								<line number="74" hits="32" branch="false"/>
+								<line number="75" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="equals" signature="(Ljava/lang/Object;)Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="116" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="117" hits="0" branch="false"/>
+								<line number="119" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="120" hits="0" branch="false"/>
+								<line number="122" hits="0" branch="false"/>
+								<line number="123" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCircuitBreakerAttribute" signature="(Ljava/lang/reflect/Method;Ljava/lang/Class;)Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttribute;" line-rate="0.4444444444444444" branch-rate="0.1">
+							<lines>
+								<line number="80" hits="40" branch="false"/>
+								<line number="81" hits="40" branch="false"/>
+								<line number="83" hits="40" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="85" hits="0" branch="false"/>
+								<line number="86" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="87" hits="0" branch="true" condition-coverage="0% (0/6)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+										<condition number="2" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="89" hits="0" branch="false"/>
+								<line number="90" hits="0" branch="false"/>
+								<line number="95" hits="40" branch="false"/>
+							</lines>
+						</method>
+						<method name="hashCode" signature="()I" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="128" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="isMatch" signature="(Ljava/lang/String;Ljava/lang/String;)Z" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="111" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setNameMap" signature="(Ljava/util/Map;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="55" hits="16" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="56" hits="32" branch="false"/>
+								<line number="58" hits="16" branch="false"/>
+							</lines>
+						</method>
+						<method name="toString" signature="()Ljava/lang/String;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="133" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="36" hits="16" branch="false"/>
+						<line number="43" hits="8" branch="false"/>
+						<line number="46" hits="16" branch="false"/>
+						<line number="55" hits="16" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="56" hits="32" branch="false"/>
+						<line number="58" hits="16" branch="false"/>
+						<line number="71" hits="32" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="72" hits="32" branch="false"/>
+						<line number="74" hits="32" branch="false"/>
+						<line number="75" hits="32" branch="false"/>
+						<line number="80" hits="40" branch="false"/>
+						<line number="81" hits="40" branch="false"/>
+						<line number="83" hits="40" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="85" hits="0" branch="false"/>
+						<line number="86" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="87" hits="0" branch="true" condition-coverage="0% (0/6)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+								<condition number="2" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="89" hits="0" branch="false"/>
+						<line number="90" hits="0" branch="false"/>
+						<line number="95" hits="40" branch="false"/>
+						<line number="111" hits="0" branch="false"/>
+						<line number="116" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="117" hits="0" branch="false"/>
+						<line number="119" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="120" hits="0" branch="false"/>
+						<line number="122" hits="0" branch="false"/>
+						<line number="123" hits="0" branch="false"/>
+						<line number="128" hits="0" branch="false"/>
+						<line number="133" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.interceptor.RuleBasedCircuitBreakerAttribute" filename="com/developmentsprint/spring/breaker/interceptor/RuleBasedCircuitBreakerAttribute.java" line-rate="0.75" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="35" hits="32" branch="false"/>
+								<line number="36" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/interceptor/RuleBasedCircuitBreakerAttribute;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="42" hits="0" branch="false"/>
+								<line number="43" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getMethodName" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="50" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="setMethodName" signature="(Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="46" hits="32" branch="false"/>
+								<line number="47" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="toString" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="55" hits="32" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="35" hits="32" branch="false"/>
+						<line number="36" hits="32" branch="false"/>
+						<line number="42" hits="0" branch="false"/>
+						<line number="43" hits="0" branch="false"/>
+						<line number="46" hits="32" branch="false"/>
+						<line number="47" hits="32" branch="false"/>
+						<line number="50" hits="32" branch="false"/>
+						<line number="55" hits="32" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.developmentsprint.spring.breaker.support" line-rate="0.4" branch-rate="0.05" complexity="1.3846153846153846">
+			<classes>
+				<class name="com.developmentsprint.spring.breaker.support.CircuitBreakerAspectSupport" filename="com/developmentsprint/spring/breaker/support/CircuitBreakerAspectSupport.java" line-rate="0.9230769230769231" branch-rate="0.5" complexity="1.3333333333333333">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="40" branch="false"/>
+								<line number="27" hits="40" branch="false"/>
+							</lines>
+						</method>
+						<method name="afterPropertiesSet" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="41" hits="40" branch="false"/>
+								<line number="42" hits="40" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCircuitBreakerAttributeSource" signature="()Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="52" hits="1680" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCircuitManager" signature="()Lcom/developmentsprint/spring/breaker/CircuitManager;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="32" hits="264" branch="false"/>
+							</lines>
+						</method>
+						<method name="invokeWithinCircuitBreaker" signature="(Lcom/developmentsprint/spring/breaker/CircuitManager$Invoker;)Ljava/lang/Object;" line-rate="0.6666666666666666" branch-rate="0.5">
+							<lines>
+								<line number="58" hits="264" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="59" hits="0" branch="false"/>
+								<line number="62" hits="264" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCircuitBreakerAttributeSource" signature="(Lcom/developmentsprint/spring/breaker/interceptor/CircuitBreakerAttributeSource;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="45" hits="40" branch="false"/>
+								<line number="46" hits="40" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCircuitManager" signature="(Lcom/developmentsprint/spring/breaker/CircuitManager;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="40" branch="false"/>
+								<line number="37" hits="40" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="23" hits="40" branch="false"/>
+						<line number="27" hits="40" branch="false"/>
+						<line number="32" hits="264" branch="false"/>
+						<line number="36" hits="40" branch="false"/>
+						<line number="37" hits="40" branch="false"/>
+						<line number="41" hits="40" branch="false"/>
+						<line number="42" hits="40" branch="false"/>
+						<line number="45" hits="40" branch="false"/>
+						<line number="46" hits="40" branch="false"/>
+						<line number="52" hits="1680" branch="false"/>
+						<line number="58" hits="264" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="59" hits="0" branch="false"/>
+						<line number="62" hits="264" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.support.CompositeCircuitManager" filename="com/developmentsprint/spring/breaker/support/CompositeCircuitManager.java" line-rate="0.0" branch-rate="0.0" complexity="2.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="59" hits="0" branch="false"/>
+								<line number="60" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="([Lcom/developmentsprint/spring/breaker/CircuitManager;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="50" hits="0" branch="false"/>
+								<line number="52" hits="0" branch="false"/>
+								<line number="68" hits="0" branch="false"/>
+								<line number="69" hits="0" branch="false"/>
+								<line number="70" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="afterPropertiesSet" signature="()V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="89" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="90" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="execute" signature="(Lcom/developmentsprint/spring/breaker/CircuitManager$Invoker;)Ljava/lang/Object;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="96" hits="0" branch="false"/>
+								<line number="98" hits="0" branch="false"/>
+								<line number="99" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="100" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="101" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="102" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="103" hits="0" branch="false"/>
+								<line number="109" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="110" hits="0" branch="false"/>
+								<line number="113" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setApplicationContext" signature="(Lorg/springframework/context/ApplicationContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="118" hits="0" branch="false"/>
+								<line number="119" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCircuitManagers" signature="(Ljava/util/Collection;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="76" hits="0" branch="false"/>
+								<line number="77" hits="0" branch="false"/>
+								<line number="78" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setFallbackToNoOpCircuitManager" signature="(Z)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="85" hits="0" branch="false"/>
+								<line number="86" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="50" hits="0" branch="false"/>
+						<line number="52" hits="0" branch="false"/>
+						<line number="59" hits="0" branch="false"/>
+						<line number="60" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="false"/>
+						<line number="69" hits="0" branch="false"/>
+						<line number="70" hits="0" branch="false"/>
+						<line number="76" hits="0" branch="false"/>
+						<line number="77" hits="0" branch="false"/>
+						<line number="78" hits="0" branch="false"/>
+						<line number="85" hits="0" branch="false"/>
+						<line number="86" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="90" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="96" hits="0" branch="false"/>
+						<line number="98" hits="0" branch="false"/>
+						<line number="99" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="100" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="101" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="102" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="103" hits="0" branch="false"/>
+						<line number="109" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="110" hits="0" branch="false"/>
+						<line number="113" hits="0" branch="false"/>
+						<line number="118" hits="0" branch="false"/>
+						<line number="119" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.support.DefaultCircuitBreakerDefinition" filename="com/developmentsprint/spring/breaker/support/DefaultCircuitBreakerDefinition.java" line-rate="0.6086956521739131" branch-rate="0.0" complexity="1.0833333333333333">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="49" hits="182" branch="false"/>
+								<line number="50" hits="182" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lcom/developmentsprint/spring/breaker/CircuitBreakerDefinition;)V" line-rate="0.2" branch-rate="1.0">
+							<lines>
+								<line number="39" hits="182" branch="false"/>
+								<line number="58" hits="0" branch="false"/>
+								<line number="59" hits="0" branch="false"/>
+								<line number="60" hits="0" branch="false"/>
+								<line number="61" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="equals" signature="(Ljava/lang/Object;)Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="99" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="getCircuitManager" signature="()Ljava/lang/String;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="85" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getDefinitionDescription" signature="()Ljava/lang/StringBuilder;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="131" hits="171" branch="false"/>
+								<line number="132" hits="171" branch="false"/>
+								<line number="133" hits="169" branch="false"/>
+								<line number="134" hits="173" branch="false"/>
+							</lines>
+						</method>
+						<method name="getName" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="73" hits="896" branch="false"/>
+							</lines>
+						</method>
+						<method name="getProperties" signature="()Ljava/util/Map;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="77" hits="664" branch="false"/>
+							</lines>
+						</method>
+						<method name="hashCode" signature="()I" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="109" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCircuitManager" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="89" hits="0" branch="false"/>
+								<line number="90" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setName" signature="(Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="69" hits="174" branch="false"/>
+								<line number="70" hits="174" branch="false"/>
+							</lines>
+						</method>
+						<method name="setProperties" signature="(Ljava/util/Map;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="81" hits="70" branch="false"/>
+								<line number="82" hits="68" branch="false"/>
+							</lines>
+						</method>
+						<method name="toString" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="122" hits="138" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="39" hits="182" branch="false"/>
+						<line number="49" hits="182" branch="false"/>
+						<line number="50" hits="182" branch="false"/>
+						<line number="58" hits="0" branch="false"/>
+						<line number="59" hits="0" branch="false"/>
+						<line number="60" hits="0" branch="false"/>
+						<line number="61" hits="0" branch="false"/>
+						<line number="69" hits="174" branch="false"/>
+						<line number="70" hits="174" branch="false"/>
+						<line number="73" hits="896" branch="false"/>
+						<line number="77" hits="664" branch="false"/>
+						<line number="81" hits="70" branch="false"/>
+						<line number="82" hits="68" branch="false"/>
+						<line number="85" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+						<line number="90" hits="0" branch="false"/>
+						<line number="99" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="109" hits="0" branch="false"/>
+						<line number="122" hits="138" branch="false"/>
+						<line number="131" hits="171" branch="false"/>
+						<line number="132" hits="171" branch="false"/>
+						<line number="133" hits="169" branch="false"/>
+						<line number="134" hits="173" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.developmentsprint.spring.breaker.support.NoOpCircuitManager" filename="com/developmentsprint/spring/breaker/support/NoOpCircuitManager.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="29" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="execute" signature="(Lcom/developmentsprint/spring/breaker/CircuitManager$Invoker;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="29" hits="0" branch="false"/>
+						<line number="36" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+	</packages>
+</coverage>
