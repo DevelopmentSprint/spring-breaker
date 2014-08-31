@@ -72,4 +72,9 @@ public class HystrixAnnotatedFooBar {
         throw new NullPointerException("This was explicitly thrown");
     }
 
+    @CircuitBreaker(name = "AnnotatedThrowsIllegalArgumentExceptionMethodGuard")
+    public void throwsIllegalArgumentException() {
+        throw new IllegalArgumentException("Bad argument");
+    }
+
 }

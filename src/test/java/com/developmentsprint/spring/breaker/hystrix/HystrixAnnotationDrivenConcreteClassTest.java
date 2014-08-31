@@ -61,6 +61,12 @@ public class HystrixAnnotationDrivenConcreteClassTest {
         } catch (CircuitBreakerException e) {
             assertThat(e.getCause()).isInstanceOf(NullPointerException.class);
         }
+        try {
+            methods.throwsIllegalArgumentException();
+            fail("Shouldn't get here");
+        } catch (CircuitBreakerException e) {
+            assertThat(e.getCause()).isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Test
