@@ -105,7 +105,7 @@ public class HystrixCircuitManager implements CircuitManager {
 
             @Override
             protected Object getFallback() {
-                if (fallback instanceof FailFastFallback) {
+                if (fallback == null || fallback instanceof FailFastFallback) {
                     return super.getFallback();
                 } else if (fallback instanceof FailSilentFallback) {
                     return null;
