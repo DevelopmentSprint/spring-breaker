@@ -26,11 +26,19 @@ public class CircuitBreakerException extends NestedRuntimeException {
     }
 
     public CircuitBreakerException(Throwable e) {
-        super(e.getMessage(), e);
+        super(messageFrom(e), e);
     }
 
     public CircuitBreakerException(String msg, Throwable cause) {
         super(msg, cause);
+    }
+
+    private static String messageFrom(Throwable e) {
+        if (e != null) {
+            return e.getMessage();
+        } else {
+            return null;
+        }
     }
 
 }
