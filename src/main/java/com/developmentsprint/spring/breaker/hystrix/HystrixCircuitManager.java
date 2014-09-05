@@ -15,14 +15,19 @@
  */
 package com.developmentsprint.spring.breaker.hystrix;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeoutException;
 
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 
 import com.developmentsprint.spring.breaker.CircuitBreakerException;
 import com.developmentsprint.spring.breaker.CircuitManager;
@@ -39,7 +44,7 @@ import com.netflix.hystrix.HystrixCommandKey;
 import com.netflix.hystrix.HystrixThreadPoolKey;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 
-public class HystrixCircuitManager implements CircuitManager {
+public class HystrixCircuitManager implements CircuitManager, InitializingBean {
 
     private static final Logger log = LoggerFactory.getLogger(HystrixCircuitManager.class);
 
@@ -50,6 +55,34 @@ public class HystrixCircuitManager implements CircuitManager {
     private static final String INSTANCE_COLLAPSER_PROP_KEY_FORMAT = "hystrix.collapser.%s.%s";
 
     private static final Map<String, Boolean> CONFIGURED_BREAKERS = new ConcurrentHashMap<String, Boolean>();
+
+    private Configuration configuration;
+
+    private Properties properties;
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        if (properties != null) {
+            ConfigurationManager.loadProperties(properties);
+        }
+        configuration = ConfigurationManager.getConfigInstance();
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
+
+    public Properties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Properties properties) {
+        this.properties = properties;
+    }
 
     @Override
     public Object execute(final Invoker invoker) {
@@ -65,15 +98,25 @@ public class HystrixCircuitManager implements CircuitManager {
                 if (!CONFIGURED_BREAKERS.containsKey(circuitBreakerName)) {
                     for (Map.Entry<String, String> entry : attr.getProperties().entrySet()) {
                         String commandKey = String.format(INSTANCE_COMMAND_PROP_KEY_FORMAT, circuitBreakerName, entry.getKey());
-                        ConfigurationManager.getConfigInstance().setProperty(commandKey, entry.getValue());
+                        configuration.setProperty(commandKey, entry.getValue());
                         String threadPoolKey = String.format(INSTANCE_THREADPOOL_PROP_KEY_FORMAT, threadPoolName, entry.getKey());
-                        ConfigurationManager.getConfigInstance().setProperty(threadPoolKey, entry.getValue());
+                        configuration.setProperty(threadPoolKey, entry.getValue());
                         String collapserKey = String.format(INSTANCE_COLLAPSER_PROP_KEY_FORMAT, threadPoolName, entry.getKey());
-                        ConfigurationManager.getConfigInstance().setProperty(collapserKey, entry.getValue());
+                        configuration.setProperty(collapserKey, entry.getValue());
                     }
                     CONFIGURED_BREAKERS.put(circuitBreakerName, Boolean.TRUE);
                 }
             }
+        }
+
+        if (log.isDebugEnabled()) {
+            Map<String, String> configValues = new HashMap<String, String>();
+            Iterator<String> keyIterator = configuration.getKeys();
+            while (keyIterator.hasNext()) {
+                String key = keyIterator.next();
+                configValues.put(key, configuration.getString(key));
+            }
+            log.debug("Configured Hystrix Properties: {}", configValues);
         }
 
         final HystrixFallback<?> fallback = determineFallback(attr);
@@ -120,11 +163,11 @@ public class HystrixCircuitManager implements CircuitManager {
         } catch (HystrixRuntimeException e) {
             Throwable t = e.getCause();
             if (t instanceof CircuitBreakerException) {
-                throw (CircuitBreakerException) e.getCause();
+                throw (CircuitBreakerException) t.getCause();
             } else if (t instanceof TimeoutException) {
-                throw new CircuitTimeoutException(e.getMessage(), e);
+                throw new CircuitTimeoutException(t.getMessage(), t);
             } else if (t instanceof RejectedExecutionException) {
-                throw new CircuitOverloadException(e.getMessage(), e);
+                throw new CircuitOverloadException(t.getMessage(), t);
             }
             throw new CircuitBreakerException(t);
         }
