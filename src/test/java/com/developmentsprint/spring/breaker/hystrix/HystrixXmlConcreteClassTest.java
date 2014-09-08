@@ -25,6 +25,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.developmentsprint.spring.breaker.CircuitManager;
+import com.developmentsprint.spring.breaker.CircuitTimeoutException;
 import com.developmentsprint.spring.breaker.hystrix.test.HystrixFooBar;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -42,6 +43,11 @@ public class HystrixXmlConcreteClassTest {
     public void testFallback() {
         String name = methods.getName();
         assertThat(name).isEqualTo("Intercepted by Hystrix");
+    }
+
+    @Test(expected = CircuitTimeoutException.class)
+    public void testPropertyReplacement() {
+        methods.getDescription();
     }
 
 }

@@ -40,6 +40,10 @@ public class HystrixFooBar {
 
     public String getDescription() {
         log.info("Returning description");
+        try {
+            Thread.sleep(750L);
+        } catch (InterruptedException e) {
+        }
         return "A mighty FooBar!";
     }
 

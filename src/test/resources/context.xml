@@ -28,6 +28,11 @@
     http://www.developmentsprint.com/schema/spring/breaker http://www.developmentsprint.com/schema/spring/breaker.xsd
   ">
 
+  <util:properties id="props">
+    <prop key="test-timeout">500</prop>
+  </util:properties>
+  <context:property-placeholder properties-ref="props" />
+
   <bean id="annotatedFooBar" class="com.developmentsprint.spring.breaker.test.AnnotatedFooBar" />
 
   <bean id="annotatedFooBarImpl" class="com.developmentsprint.spring.breaker.test.AnnotatedFooBarImpl" />
@@ -54,11 +59,17 @@
           <prop key="fallbackClass">com.developmentsprint.spring.breaker.hystrix.test.HystrixFallback</prop>
         </breaker:properties>
       </breaker:circuit-breaker>
+      <breaker:circuit-breaker name="GetDescMethodGuard" method="getDescription">
+        <breaker:properties>
+          <prop key="execution.isolation.thread.timeoutInMilliseconds">${test-timeout}</prop>
+        </breaker:properties>
+      </breaker:circuit-breaker>
       <breaker:circuit-breaker name="GetCreatedDateMethodGuard" method="getCreatedDate" />
     </breaker:advice>
 
     <aop:config>
       <aop:advisor advice-ref="circuitBreakerAdvice" pointcut="execution(* getName(..))"/>
+      <aop:advisor advice-ref="circuitBreakerAdvice" pointcut="execution(* getDescription(..))"/>
       <aop:advisor advice-ref="circuitBreakerAdvice" pointcut="execution(* getCreatedDate(..))"/>
     </aop:config>
 

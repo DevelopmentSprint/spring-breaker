@@ -15,12 +15,19 @@
  */
 package com.developmentsprint.spring.breaker.support;
 
+import java.util.Map;
+
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.EmbeddedValueResolverAware;
+import org.springframework.util.StringValueResolver;
 
 import com.developmentsprint.spring.breaker.CircuitManager;
 import com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttributeSource;
 
-public abstract class CircuitBreakerAspectSupport implements InitializingBean {
+public abstract class CircuitBreakerAspectSupport implements InitializingBean, ApplicationContextAware, EmbeddedValueResolverAware {
 
     private CircuitManager circuitManager;
 
@@ -28,12 +35,26 @@ public abstract class CircuitBreakerAspectSupport implements InitializingBean {
 
     private CircuitBreakerAttributeSource circuitBreakerAttributeSource;
 
+    private ApplicationContext applicationContext;
+
+    private StringValueResolver valueResolver;
+
     public CircuitManager getCircuitManager() {
         return circuitManager;
     }
 
     public void setCircuitManager(CircuitManager circuitManager) {
         this.circuitManager = circuitManager;
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+
+    @Override
+    public void setEmbeddedValueResolver(StringValueResolver resolver) {
+        this.valueResolver = resolver;
     }
 
     @Override
@@ -52,7 +73,19 @@ public abstract class CircuitBreakerAspectSupport implements InitializingBean {
         return this.circuitBreakerAttributeSource;
     }
 
+    protected ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
     protected Object invokeWithinCircuitBreaker(CircuitManager.Invoker invoker) {
+
+        // ensure that properties were replaced
+        Map<String,String> properties = invoker.getCircuitBreakerAttribute().getProperties();
+        for (Map.Entry<String, String> e : properties.entrySet()) {
+            String value = valueResolver.resolveStringValue(e.getValue());
+            properties.put(e.getKey(), value);
+        }
+
         // check whether aspect is enabled
         // to cope with cases where the AJ is pulled in automatically
         if (!this.initialized) {
