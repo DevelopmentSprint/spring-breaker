@@ -15,7 +15,6 @@
  */
 package com.developmentsprint.spring.breaker.hystrix;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
@@ -110,13 +109,17 @@ public class HystrixCircuitManager implements CircuitManager, InitializingBean {
         }
 
         if (log.isDebugEnabled()) {
-            Map<String, String> configValues = new HashMap<String, String>();
+            StringBuilder builder = new StringBuilder();
             Iterator<String> keyIterator = configuration.getKeys();
             while (keyIterator.hasNext()) {
                 String key = keyIterator.next();
-                configValues.put(key, configuration.getString(key));
+                builder.append(System.getProperty("line.separator"))
+                    .append("\t")
+                    .append(key)
+                    .append(" : ")
+                    .append(configuration.getString(key));
             }
-            log.debug("Configured Hystrix Properties: {}", configValues);
+            log.debug("Configured Hystrix Properties: {}", builder);
         }
 
         final HystrixFallback<?> fallback = determineFallback(attr);

@@ -15,10 +15,11 @@
  */
 package com.developmentsprint.spring.breaker.config;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.TypedStringValue;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.ManagedMap;
@@ -35,6 +36,8 @@ import com.developmentsprint.spring.breaker.interceptor.NameMatchCircuitBreakerA
 import com.developmentsprint.spring.breaker.interceptor.RuleBasedCircuitBreakerAttribute;
 
 public class BreakerAdviceParser extends AbstractSingleBeanDefinitionParser {
+
+    private static Logger log = LoggerFactory.getLogger(BreakerAdviceParser.class);
 
     private static final String CB_MANAGER_NAME = "circuitManager";
 
@@ -58,8 +61,8 @@ public class BreakerAdviceParser extends AbstractSingleBeanDefinitionParser {
             // Using attributes source.
             RootBeanDefinition attributeSourceDefinition = parseAttributeSource(cbAttributes, parserContext);
             builder.addPropertyValue("circuitBreakerAttributeSource", attributeSourceDefinition);
-        }
-        else {
+
+        } else {
             // Assume annotations source.
             builder.addPropertyValue("circuitBreakerAttributeSource",
                     new RootBeanDefinition("com.developmentsprint.spring.breaker.annotations.AnnotationCircuitBreakerAttributeSource"));
@@ -87,16 +90,22 @@ public class BreakerAdviceParser extends AbstractSingleBeanDefinitionParser {
                 attribute.setName(cbName);
             }
 
+            ManagedMap<String, String> props = new ManagedMap<String, String>();
             Element propsElement = DomUtils.getChildElementByTagName(methodEle, "properties");
             if (propsElement != null) {
-                Map<String, String> props = new HashMap<String, String>();
+                //Map<String, String> props = new HashMap<String, String>();
                 List<Element> propElements = DomUtils.getChildElementsByTagName(propsElement, "prop");
                 for (Element propElement : propElements) {
                     String key = propElement.getAttribute("key");
                     String val = DomUtils.getTextValue(propElement);
-                    props.put(key, val);
+                    props.put(key, new TypedStringValue(val).getValue());
                 }
                 attribute.setProperties(props);
+            }
+            if (log.isDebugEnabled()) {
+                for (Map.Entry<String, String> e : attribute.getProperties().entrySet()) {
+                    log.debug("{} prop : {} : {}", cbName, e.getKey(), e.getValue());
+                }
             }
 
             circuitBreakerAttributeMap.put(nameHolder, attribute);
