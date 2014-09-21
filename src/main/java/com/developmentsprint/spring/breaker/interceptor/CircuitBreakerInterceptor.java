@@ -44,7 +44,7 @@ public class CircuitBreakerInterceptor extends CircuitBreakerAspectSupport imple
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
 
-        CircuitManager.Invoker aopAllianceInvoker = new AopAllianceInvoker(invocation, getCircuitBreakerAttributeSource());
+        CircuitManager.Invoker<?> aopAllianceInvoker = new AopAllianceInvoker<Object>(invocation, getCircuitBreakerAttributeSource());
 
         try {
             return invokeWithinCircuitBreaker(aopAllianceInvoker);

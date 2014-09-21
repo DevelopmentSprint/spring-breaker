@@ -47,7 +47,9 @@
 
   <beans profile="hystrixManager">
 
-    <bean id="circuitManager" class="com.developmentsprint.spring.breaker.hystrix.HystrixCircuitManager" />
+    <bean id="circuitManager" class="com.developmentsprint.spring.breaker.hystrix.HystrixCircuitManager">
+      <property name="propertiesFileName" value="cb" />
+    </bean>
 
   </beans>
 

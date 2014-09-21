@@ -77,7 +77,7 @@ public abstract class CircuitBreakerAspectSupport implements InitializingBean, A
         return applicationContext;
     }
 
-    protected Object invokeWithinCircuitBreaker(CircuitManager.Invoker invoker) {
+    protected <T> T invokeWithinCircuitBreaker(CircuitManager.Invoker<T> invoker) {
 
         // ensure that properties were replaced
         Map<String,String> properties = invoker.getCircuitBreakerAttribute().getProperties();

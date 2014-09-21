@@ -24,7 +24,7 @@ import org.springframework.util.StringUtils;
 import com.developmentsprint.spring.breaker.CircuitBreakerException;
 import com.developmentsprint.spring.breaker.CircuitManager;
 
-public class AopAllianceInvoker implements CircuitManager.Invoker {
+public class AopAllianceInvoker<T> implements CircuitManager.Invoker<T> {
 
     private final CircuitBreakerAttribute circuitBreakerAttribute;
 
@@ -94,10 +94,11 @@ public class AopAllianceInvoker implements CircuitManager.Invoker {
         return arguments;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Object invoke() {
+    public T invoke() {
         try {
-            return invocation.proceed();
+            return (T) invocation.proceed();
         } catch (CircuitBreakerException e) {
             throw e;
         } catch (Throwable e) {

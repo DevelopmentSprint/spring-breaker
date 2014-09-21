@@ -20,12 +20,14 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Future;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import com.developmentsprint.spring.breaker.CircuitBreakerDefinition;
 import com.developmentsprint.spring.breaker.CircuitManager;
 
 /**
@@ -85,6 +87,12 @@ public class CompositeCircuitManager implements CircuitManager, InitializingBean
         this.fallbackToNoOpCircuitManager = fallbackToNoOpCache;
     }
 
+    @Override
+    public List<CircuitBreakerDefinition> getConfiguredCircuitBreakers() {
+        return null;
+    }
+
+    @Override
     public void afterPropertiesSet() {
         if (this.fallbackToNoOpCircuitManager) {
             this.circuitManagers.add(new NoOpCircuitManager());
@@ -92,7 +100,21 @@ public class CompositeCircuitManager implements CircuitManager, InitializingBean
     }
 
     @Override
-    public Object execute(Invoker invoker) {
+    public <T> T execute(Invoker<T> invoker) {
+        return getApplicableManager(invoker).execute(invoker);
+    }
+
+    @Override
+    public <T> Future<T> queue(Invoker<T> invoker) {
+        return getApplicableManager(invoker).queue(invoker);
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+    
+    private CircuitManager getApplicableManager(Invoker<?> invoker) {
         String declaredManager = invoker.getCircuitBreakerAttribute().getCircuitManager();
 
         CircuitManager applicableCircuitManager = null;
@@ -110,12 +132,7 @@ public class CompositeCircuitManager implements CircuitManager, InitializingBean
             applicableCircuitManager = new NoOpCircuitManager();
         }
 
-        return applicableCircuitManager.execute(invoker);
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+        return applicableCircuitManager;
     }
 
 }

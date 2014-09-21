@@ -16,18 +16,24 @@
 package com.developmentsprint.spring.breaker.hystrix;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.commons.configuration.Configuration;
+import org.apache.commons.configuration.AbstractConfiguration;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
+import com.developmentsprint.spring.breaker.CircuitBreakerDefinition;
 import com.developmentsprint.spring.breaker.CircuitBreakerException;
 import com.developmentsprint.spring.breaker.CircuitManager;
 import com.developmentsprint.spring.breaker.CircuitOverloadException;
@@ -37,13 +43,14 @@ import com.developmentsprint.spring.breaker.hystrix.fallback.FailSilentFallback;
 import com.developmentsprint.spring.breaker.hystrix.fallback.HystrixFallback;
 import com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttribute;
 import com.netflix.config.ConfigurationManager;
+import com.netflix.config.DeploymentContext;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
 import com.netflix.hystrix.HystrixThreadPoolKey;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 
-public class HystrixCircuitManager implements CircuitManager, InitializingBean {
+public class HystrixCircuitManager implements CircuitManager, InitializingBean, ApplicationContextAware {
 
     private static final Logger log = LoggerFactory.getLogger(HystrixCircuitManager.class);
 
@@ -55,23 +62,45 @@ public class HystrixCircuitManager implements CircuitManager, InitializingBean {
 
     private static final Map<String, Boolean> CONFIGURED_BREAKERS = new ConcurrentHashMap<String, Boolean>();
 
-    private Configuration configuration;
+    private AbstractConfiguration configuration;
 
     private Properties properties;
+
+    private DeploymentContext deploymentContext;
+
+    private String propertiesFileName;
+
+    private ApplicationContext applicationContext;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+
+    @Override
+    public List<CircuitBreakerDefinition> getConfiguredCircuitBreakers() {
+        return null;
+    }
 
     @Override
     public void afterPropertiesSet() throws Exception {
         if (properties != null) {
             ConfigurationManager.loadProperties(properties);
         }
+        if (deploymentContext != null) {
+            ConfigurationManager.setDeploymentContext(deploymentContext);
+        }
+        if (StringUtils.isNotBlank(propertiesFileName)) {
+            ConfigurationManager.loadCascadedPropertiesFromResources(propertiesFileName);
+        }
         configuration = ConfigurationManager.getConfigInstance();
     }
 
-    public Configuration getConfiguration() {
+    public AbstractConfiguration getConfiguration() {
         return configuration;
     }
 
-    public void setConfiguration(Configuration configuration) {
+    public void setConfiguration(AbstractConfiguration configuration) {
         this.configuration = configuration;
     }
 
@@ -83,8 +112,45 @@ public class HystrixCircuitManager implements CircuitManager, InitializingBean {
         this.properties = properties;
     }
 
+    public DeploymentContext getDeploymentContext() {
+        return deploymentContext;
+    }
+
+    public void setDeploymentContext(DeploymentContext deploymentContext) {
+        this.deploymentContext = deploymentContext;
+    }
+
+    public String getPropertiesFileName() {
+        return propertiesFileName;
+    }
+
+    public void setPropertiesFileName(String propertiesFileName) {
+        this.propertiesFileName = propertiesFileName;
+    }
+
     @Override
-    public Object execute(final Invoker invoker) {
+    public <T> T execute(Invoker<T> invoker) {
+        return executeInternal(invoker, new CommandRunner<T, T>() {
+            @Override
+            public T run(HystrixCommand<T> command) {
+                return command.execute();
+            }
+        });
+    }
+
+    @Override
+    public <T> Future<T> queue(Invoker<T> invoker) {
+        CommandRunner<T, Future<T>> runner = new CommandRunner<T, Future<T>>() {
+            @Override
+            public Future<T> run(HystrixCommand<T> command) {
+                return command.queue();
+            }
+        };
+        return executeInternal(invoker, runner);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T, J> J executeInternal(final Invoker<T> invoker, CommandRunner<T, J> runner) {
 
         CircuitBreakerAttribute attr = invoker.getCircuitBreakerAttribute();
 
@@ -114,10 +180,10 @@ public class HystrixCircuitManager implements CircuitManager, InitializingBean {
             while (keyIterator.hasNext()) {
                 String key = keyIterator.next();
                 builder.append(System.getProperty("line.separator"))
-                    .append("\t")
-                    .append(key)
-                    .append(" : ")
-                    .append(configuration.getString(key));
+                        .append("\t")
+                        .append(key)
+                        .append(" : ")
+                        .append(configuration.getString(key));
             }
             log.debug("Configured Hystrix Properties: {}", builder);
         }
@@ -135,34 +201,34 @@ public class HystrixCircuitManager implements CircuitManager, InitializingBean {
                 .andCommandKey(HystrixCommandKey.Factory.asKey(circuitBreakerName))
                 .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey(threadPoolName));
 
-        HystrixCommand<Object> command = new HystrixCommand<Object>(setter) {
+        HystrixCommand<T> command = new HystrixCommand<T>(setter) {
 
             @Override
-            protected Object run() throws Exception {
+            protected T run() throws Exception {
                 try {
                     return invoker.invoke();
                 } catch (Exception e) {
                     if (e.getCause() != null && e.getCause() instanceof Exception) {
-                        e = ((Exception)e.getCause());
+                        e = ((Exception) e.getCause());
                     }
                     throw e;
                 }
             }
 
             @Override
-            protected Object getFallback() {
+            protected T getFallback() {
                 if (fallback == null || fallback instanceof FailFastFallback) {
                     return super.getFallback();
                 } else if (fallback instanceof FailSilentFallback) {
                     return null;
                 } else {
-                    return fallback.fallback();
+                    return (T) fallback.fallback();
                 }
             }
         };
 
         try {
-            return command.execute();
+            return (J) runner.run(command);
         } catch (HystrixRuntimeException e) {
             Throwable t = e.getCause();
             if (t instanceof CircuitBreakerException) {

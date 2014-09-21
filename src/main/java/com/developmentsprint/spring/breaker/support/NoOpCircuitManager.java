@@ -15,6 +15,10 @@
  */
 package com.developmentsprint.spring.breaker.support;
 
+import java.util.List;
+import java.util.concurrent.Future;
+
+import com.developmentsprint.spring.breaker.CircuitBreakerDefinition;
 import com.developmentsprint.spring.breaker.CircuitManager;
 
 /**
@@ -32,8 +36,23 @@ public class NoOpCircuitManager implements CircuitManager {
      * Performs no circuit breaking. This method passes through to the actual invocation.
      */
     @Override
-    public Object execute(Invoker invoker) {
+    public <T> T execute(Invoker<T> invoker) {
         return invoker.invoke();
+    }
+
+    /**
+     * Performs no circuit breaking. This method passes through to the actual invocation.
+     */
+    @Override
+    public <T> Future<T> queue(Invoker<T> invoker) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<CircuitBreakerDefinition> getConfiguredCircuitBreakers() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

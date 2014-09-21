@@ -89,7 +89,7 @@ public abstract aspect AbstractCircuitBreakerAspect extends CircuitBreakerAspect
             }
         };
 
-        CircuitManager.Invoker aspectJInvoker = new AopAllianceInvoker(invocation, getCircuitBreakerAttributeSource()) {
+        CircuitManager.Invoker<?> aspectJInvoker = new AopAllianceInvoker<Object>(invocation, getCircuitBreakerAttributeSource()) {
             @Override
             public Object invoke() {
                 return proceed(circuitBreakerObject);

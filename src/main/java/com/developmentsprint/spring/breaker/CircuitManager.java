@@ -16,18 +16,24 @@
 package com.developmentsprint.spring.breaker;
 
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.concurrent.Future;
 
 import com.developmentsprint.spring.breaker.interceptor.CircuitBreakerAttribute;
 
 public interface CircuitManager {
 
-    Object execute(Invoker invoker);
+    <T> T execute(Invoker<T> invoker);
 
-    public interface Invoker {
+    <T> Future<T> queue(Invoker<T> invoker);
+
+    List<CircuitBreakerDefinition> getConfiguredCircuitBreakers();
+
+    public interface Invoker<T> {
 
         CircuitBreakerAttribute getCircuitBreakerAttribute();
 
-        Object invoke();
+        T invoke();
 
         Object getTarget();
 
